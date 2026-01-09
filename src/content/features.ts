@@ -1,56 +1,32 @@
 export const featuresContent = [
   {
+    title: 'Instant Launch',
+    description: 'Stop waiting weeks for a developer. We get your professional course platform live and ready to accept students in under 24 hours.',
     icon: 'lightning',
-    title: 'Autonomous Execution',
-    description:
-      'AI agents that understand context, make decisions, and execute tasks without constant supervision.',
   },
   {
-    icon: 'code',
-    title: 'Smart Integration',
-    description:
-      'Seamlessly connect with your tools: Slack, email, databases, APIs, and 1000+ platforms.',
-  },
-  {
-    icon: 'chart',
-    title: 'Real-Time Analytics',
-    description:
-      'Monitor performance, track success rates, and optimize workflows with detailed insights.',
-  },
-  {
-    icon: 'chat',
-    title: 'Natural Language',
-    description:
-      'Configure agents using plain English. No complex programming or technical expertise required.',
-  },
-  {
-    icon: 'shield',
-    title: 'Enterprise Security',
-    description:
-      'Bank-level encryption, SOC 2 compliance, and complete data privacy. Your data stays secure.',
-  },
-  {
-    icon: 'clock',
-    title: '24/7 Operation',
-    description:
-      'Agents work around the clock, handling tasks while you sleep. Reliable uptime guaranteed.',
-  },
-  {
-    icon: 'brush',
-    title: 'Custom Workflows',
-    description:
-      'Build tailored automation flows that match your unique business processes and requirements.',
-  },
-  {
-    icon: 'layers',
-    title: 'Multi-Agent Teams',
-    description:
-      'Coordinate multiple specialized agents working together to solve complex, multi-step challenges.',
-  },
-  {
+    title: 'Keep Every Penny',
+    description: 'We charge zero commission on your sales. Unlike other platforms, your hard-earned revenue goes directly to your bank account.',
     icon: 'zap',
-    title: 'Instant Scaling',
-    description:
-      'Scale from 1 to 1000+ agents instantly. Handle peak loads without infrastructure headaches.',
+  },
+  {
+    title: 'Bespoke Branding',
+    description: 'No more generic templates. Your platform is built to match your brand identity on your own custom domain name.',
+    icon: 'brush',
+  },
+  {
+    title: 'Secure Hosting',
+    description: 'Enjoy peace of mind with fully managed technical hosting and security. We handle the updates while you handle the students.',
+    icon: 'shield',
+  },
+  {
+    title: 'Student Analytics',
+    description: 'Track progress, manage enrolments, and see exactly how your students are engaging with your video content in real-time.',
+    icon: 'chart',
+  },
+  {
+    title: 'Global Payments',
+    description: 'Accept payments from students worldwide via Stripe or PayPal. Set up one-time fees or recurring monthly subscriptions.',
+    icon: 'credit-card',
   },
 ];

@@ -1,41 +1,48 @@
 ---
 import { siteConfig } from '../config.ts';
 import { Icon } from 'astro-icon/components';
-import { faqItems } from '../content/faq';
+import { faqItems } from '../content/faq.ts'; 
 ---
 
-<section id="faq" class="relative bg-white px-4 py-20 sm:px-6 lg:px-8">
-  <div class="mx-auto max-w-4xl">
-    <div class="scroll-fade-up mb-16 text-center">
-      <h2 class="text-mono-black mb-4 text-4xl font-bold sm:text-5xl">
-        {siteConfig.faq.title}
+<section id="faq" class="relative border-t-4 border-brand-charcoal px-4 py-24 sm:px-6 lg:px-8 bg-white overflow-hidden">
+  
+  <div class="absolute inset-0 pointer-events-none opacity-[0.12]" 
+       style="background-image: linear-gradient(#477eff 1px, transparent 1px); background-size: 100% 3rem;">
+  </div>
+  
+  <div class="absolute left-8 top-0 bottom-0 w-1 border-l-2 border-red-500 opacity-20 pointer-events-none md:left-24"></div>
+
+  <div class="mx-auto max-w-4xl relative z-10">
+    <div class="scroll-fade-up mb-20">
+      <h2 class="text-brand-charcoal mb-4 text-4xl font-extrabold sm:text-5xl tracking-tight uppercase italic">
+        <span class="bg-brand-mint px-4 py-1 border-4 border-brand-charcoal shadow-[8px_8px_0px_0px_rgba(45,52,70,1)]">
+          {siteConfig.faq.title}
+        </span>
       </h2>
-      <p class="text-mono-dark text-xl">
+      <p class="text-brand-charcoal/70 text-xl font-black uppercase tracking-tight mt-10">
         {siteConfig.faq.subtitle}
       </p>
     </div>
 
     <div class="space-y-4">
       {
-        faqItems.map((item, index) => (
-          <div
-            class={`scroll-fade-up border-mono-lighter rounded-lg border stagger-${(index % 9) + 1}`}
-          >
-            <button
-              class="faq-button flex w-full items-center justify-between px-6 py-5 text-left"
-              aria-expanded="false"
-            >
-              <span class="text-mono-black pr-8 font-semibold">
-                {item.question}
-              </span>
-              <Icon
-                name="heroicons:chevron-down"
-                class="faq-icon text-mono-gray h-5 w-5 flex-shrink-0"
-              />
-            </button>
-            <div class="faq-content text-mono-dark px-6 leading-relaxed">
-              {item.answer}
-            </div>
+        faqItems.map((item) => (
+          <div class="group relative">
+            <details class="faq-details cursor-pointer">
+              <summary class="flex items-center justify-between list-none py-6 border-b-2 border-brand-charcoal/10 transition-colors hover:bg-brand-lavender/10">
+                <span class="text-xl font-black uppercase italic tracking-tight text-brand-charcoal pr-8 group-hover:pl-2 transition-all">
+                  {item.question}
+                </span>
+                <div class="bg-white border-2 border-brand-charcoal p-1 rounded shadow-[4px_4px_0px_0px_rgba(45,52,70,1)] group-open:bg-brand-lavender group-open:rotate-45 transition-all">
+                  <Icon name="heroicons:plus" class="h-6 w-6 text-brand-charcoal" />
+                </div>
+              </summary>
+              <div class="py-8 px-6 bg-slate-50 border-x-4 border-brand-charcoal my-2 shadow-[6px_6px_0px_0px_rgba(45,52,70,1)]">
+                <p class="text-brand-charcoal font-bold leading-relaxed italic text-lg whitespace-pre-line">
+                  {item.answer}
+                </p>
+              </div>
+            </details>
           </div>
         ))
       }
@@ -44,15 +51,23 @@ import { faqItems } from '../content/faq';
 </section>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const faqButtons = document.querySelectorAll('.faq-button');
-    faqButtons.forEach((button) => {
-      button.addEventListener('click', () => {
-        const content = button.nextElementSibling;
-        const isExpanded = button.getAttribute('aria-expanded') === 'true';
-        button.setAttribute('aria-expanded', String(!isExpanded));
-        content?.classList.toggle('active');
+  // This handles the "Close others when one opens" logic
+  const details = document.querySelectorAll(".faq-details");
+
+  details.forEach((targetDetail) => {
+    targetDetail.addEventListener("click", () => {
+      // Close all details that aren't the one we just clicked
+      details.forEach((detail) => {
+        if (detail !== targetDetail) {
+          detail.removeAttribute("open");
+        }
       });
     });
   });
 </script>
+
+<style>
+  details > summary::-webkit-details-marker {
+    display: none;
+  }
+</style>

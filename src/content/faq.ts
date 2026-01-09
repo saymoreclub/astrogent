@@ -1,32 +1,32 @@
 export const faqItems = [
   {
-    question: 'What is an AI agent and how does it work?',
+    question: 'How do I actually get my money?',
     answer:
-      'An AI agent is an autonomous software program that can understand instructions, make decisions, and perform tasks on your behalf. Our agents use advanced language models to interpret your goals, connect with your tools, and execute complex workflows automatically—learning and improving over time.',
+      'We connect your platform directly to your own Stripe or PayPal account. When a student pays, the money goes straight to you. We never touch it, and we don’t take a percentage. You keep every penny of your fees.',
   },
   {
-    question: 'Do I need coding knowledge to use this platform?',
+    question: 'Do I need to be tech-savvy to run this?',
     answer:
-      'Not at all! Our platform is designed for everyone. You configure agents using natural language—just describe what you want in plain English. The AI handles all the technical complexity behind the scenes. That said, developers can also access advanced features and APIs for custom integrations.',
+      'No. We build the site and handle the hosting for you. Once it’s live, you get a simple dashboard where you can drag and drop your videos and manage your students. If you can use basic apps, you can use this.',
   },
   {
-    question: 'How secure is my data?',
+    question: 'Who actually owns the student data?',
     answer:
-      'Security is our top priority. We use bank-level encryption (AES-256) for data at rest and in transit, are SOC 2 Type II certified, and maintain strict access controls. Your data is never used to train AI models, and we offer enterprise options including on-premise deployment for maximum control.',
+      'You do. Unlike big marketplaces, we don’t own your student list or your course materials. Everything stays private to your brand. We provide the infrastructure, but you retain 100% ownership of your business data.',
   },
   {
-    question: 'Can I integrate with my existing tools?',
+    question: 'Can I use my own domain name?',
     answer:
-      'Yes! We support 1000+ integrations including Slack, Microsoft Teams, Gmail, Salesforce, HubSpot, databases, and custom APIs. Most integrations take just a few clicks to set up. If you need a custom integration, our Enterprise plan includes dedicated support to build exactly what you need.',
+      'Yes. On our Pro and Enterprise plans, we’ll help you link your own domain. It looks more professional and keeps your brand front and centre for your students.',
   },
   {
-    question: "What happens if I exceed my plan's task limit?",
+    question: 'What happens if I need help?',
     answer:
-      "We'll notify you when you approach your limit. You can upgrade to a higher plan anytime, or purchase additional task packs. Your agents won't stop working—we'll never leave you hanging mid-workflow. We believe in flexible, fair pricing that grows with your needs.",
+      'You won’t be talking to a bot. Depending on your plan, you’ll have a direct line to us via email or a private Telegram chat. We set up the system, so we can usually fix or explain things in minutes.',
   },
   {
-    question: 'Can I cancel my subscription anytime?',
+    question: 'Am I locked into a contract?',
     answer:
-      "Absolutely. You can cancel anytime with no penalties or fees. You'll retain access until the end of your billing period, and you can export all your data and configurations. We're confident you'll love the platform, but we never lock you in.",
+      'No. Everything is a simple monthly subscription. You can cancel whenever you want with no exit fees. If you decide to leave, you can take your student data and course materials with you.',
   },
 ];

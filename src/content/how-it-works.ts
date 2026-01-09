@@ -1,32 +1,26 @@
 export const howItWorksSteps = [
   {
     number: 1,
-    title: 'Define Your Goal',
+    title: 'Brand Brief',
     description:
-      'Describe what you want to automate in plain English. No technical jargon needed.',
+      'Tell us about your tutoring business and vision. We handle the domain setup and technical requirements.',
   },
   {
     number: 2,
-    title: 'Connect Your Tools',
+    title: 'Custom Build',
     description:
-      'Link your existing apps and services. We support 1000+ integrations out of the box.',
+      'We assemble your bespoke platform, integrating your payments and video hosting within 24 hours.',
   },
   {
     number: 3,
-    title: 'Deploy Your Agent',
+    title: 'Review & Launch',
     description:
-      'Our AI configures and optimizes your agent automatically. Review and launch in one click.',
+      'Walk through your new dashboard, upload your first course content, and hit the launch button.',
   },
   {
     number: 4,
-    title: 'Monitor & Optimize',
+    title: 'Scale Revenue',
     description:
-      'Track performance in real-time and let your agents learn and improve continuously.',
-  },
-  {
-    number: 5,
-    title: 'Scale & Grow',
-    description:
-      "Add more agents, automate new workflows, and watch your team's productivity soar.",
+      'Keep 100% of your earnings. Monitor student progress and grow your business without technical limits.',
   },
 ];

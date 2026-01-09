@@ -1,27 +1,18 @@
-// ============================================
-// SITE CONFIGURATION
-// ============================================
-
 export const siteConfig = {
   // ============================================
   // SITE METADATA & SEO
   // ============================================
   site: {
-    name: 'AI Agent Platform',
-    title: 'AI Agent Platform - Intelligent Automation for Modern Teams',
-    description:
-      'Transform your business with autonomous AI agents. Automate workflows, integrate seamlessly, and scale effortlessly. Start free today.',
-    keywords:
-      'AI agents, automation, workflow automation, AI platform, business automation',
-    email: 'hello@aiagentplatform.com',
-
-    // Open Graph / Twitter
-    ogTitle: 'AI Agent Platform - Intelligent Automation',
-    ogDescription:
-      'Transform your business with autonomous AI agents that work 24/7',
+    name: 'Lernit',
+    title: 'Lernit | Sell Courses on Your Own Platform',
+    description: 'Professional learning platforms for independent tutors. One fixed monthly fee, zero commission.',
+    keywords: 'sell courses, tutor platform, custom LMS, student portal, independent teacher website',
+    email: 'hello@lernit.io',
+    ogTitle: 'Lernit | Sell Courses on Your Own Platform',
+    ogDescription: 'Professional learning platforms for tutors. Keep 100% of your revenue.',
     twitterCard: 'summary_large_image',
-    twitterTitle: 'AI Agent Platform',
-    twitterDescription: 'Intelligent automation for modern teams',
+    twitterTitle: 'Lernit',
+    twitterDescription: 'Custom learning platforms for independent educators.',
   },
 
   // ============================================
@@ -30,7 +21,7 @@ export const siteConfig = {
   navigation: {
     links: [
       { name: 'Features', href: '#features' },
-      { name: 'How It Works', href: '#how-it-works' },
+      { name: 'Process', href: '#how-it-works' },
       { name: 'Pricing', href: '#pricing' },
       { name: 'FAQ', href: '#faq' },
     ],
@@ -44,44 +35,36 @@ export const siteConfig = {
   // HERO SECTION
   // ============================================
   hero: {
-    headline: 'Intelligent AI Agents',
-    subheadline: 'Built for Your Business',
-    description:
-      'Transform your workflow with autonomous AI agents that handle complex tasks, learn from your data, and deliver results 24/7. No coding required.',
+    headline: 'Sell Courses on',
+    subheadline: 'Your Own Platform.',
+    description: 'We build bespoke learning platforms for tutors who want to own their student experience. Launch your professional course site in hours instead of weeks.',
     cta: {
-      primary: {
-        text: 'Get Started Free',
-        href: '#contact',
-      },
-      secondary: {
-        text: 'See How It Works',
-        href: '#how-it-works',
-      },
+      primary: { text: 'Start Selling', href: '#contact' },
+      secondary: { text: 'View Pricing', href: '#pricing' },
     },
     stats: [
-      { value: '10k+', label: 'Active Agents' },
-      { value: '99.9%', label: 'Uptime' },
-      { value: '5M+', label: 'Tasks Automated' },
+      { value: '<24h', label: 'Launch Time' },
+      { value: '0%', label: 'Sales Commission' },
+      { value: '100%', label: 'Brand Ownership' },
     ],
   },
-
+  
   // ============================================
   // FEATURES SECTION
   // ============================================
   features: {
-    title: 'Powerful Capabilities',
-    subtitle:
-      'Everything you need to build, deploy, and scale intelligent automation',
+    title: 'Own the Experience',
+    subtitle: 'Everything you need to host and sell your courses under your own brand',
     items: [
-      { icon: 'lightning', title: 'Autonomous Execution' },
-      { icon: 'code', title: 'Smart Integration' },
-      { icon: 'chart', title: 'Real-Time Analytics' },
-      { icon: 'chat', title: 'Natural Language' },
-      { icon: 'shield', title: 'Enterprise Security' },
-      { icon: 'clock', title: '24/7 Operation' },
-      { icon: 'brush', title: 'Custom Workflows' },
-      { icon: 'layers', title: 'Multi-Agent Teams' },
-      { icon: 'zap', title: 'Instant Scaling' },
+      { icon: 'zap', title: 'Student Dashboard' },
+      { icon: 'brush', title: 'Bespoke Branding' },
+      { icon: 'layers', title: 'Video Lessons' },
+      { icon: 'shield', title: 'Secure Checkouts' },
+      { icon: 'chat', title: 'Telegram Support' },
+      { icon: 'clock', title: 'Fast Launch' },
+      { icon: 'code', title: 'Custom Domain Name' },
+      { icon: 'chart', title: 'Progress Tracking' },
+      { icon: 'zap', title: 'Stripe & PayPal' },
     ],
   },
 
@@ -89,87 +72,100 @@ export const siteConfig = {
   // HOW IT WORKS
   // ============================================
   howItWorks: {
-    title: 'How It Works',
-    subtitle: 'Get started in minutes with our simple 5-step process',
+    title: 'The Road to Launch',
+    subtitle: 'We build your custom learning environment in four simple steps',
+    steps: [
+      { number: '01', title: 'Discovery', description: 'We map out your course structure and branding.' },
+      { number: '02', title: 'Design', description: 'Our team builds your bespoke portal.' },
+      { number: '03', title: 'Integrate', description: 'We connect your domain and payments.' },
+      { number: '04', title: 'Launch', description: 'Your platform goes live.' }
+    ]
   },
 
   // ============================================
   // TESTIMONIALS
   // ============================================
   testimonials: {
-    title: 'Loved by Teams Worldwide',
-    subtitle: 'See what our customers have to say about AI Agent Platform',
-    companyLogos: [
-      'TECHFLOW',
-      'INNOVATE',
-      'DATASTREAM',
-      'CLOUDSYNC',
-      'NEXUSAI',
-    ],
+    title: 'Tutor Success Stories',
+    subtitle: 'Join the tutors who have reclaimed their independence.',
+    items: [
+      {
+        name: 'Benjamin Cowling-Monks',
+        role: 'Maritime Tutor',
+        content: 'Launching my platform in 24 hours felt like magic. I kept every penny of my fees.',
+        avatar: 'BC',
+        color: 'bg-brand-lavender',
+      },
+      {
+        name: 'David Thorne',
+        role: 'Language Coach',
+        content: 'The bespoke branding is what sold it for me. It is entirely my own domain.',
+        avatar: 'DT',
+        color: 'bg-[#fef9c3]',
+      },
+      {
+        name: 'Amara Okafor',
+        role: 'Language Tutor',
+        content: 'Having a team handle the hosting meant I could stay focused on teaching.',
+        avatar: 'AO',
+        color: 'bg-[#e0f2fe]',
+      }
+    ]
   },
 
   // ============================================
-  // PRICING
+  // PRICING 
   // ============================================
   pricing: {
-    title: 'Simple, Transparent Pricing',
-    subtitle:
-      'Choose the plan that fits your needs. Upgrade or downgrade anytime.',
+    title: 'Transparent Monthly Plans',
+    subtitle: 'Simple all-in-one pricing. We never take a cut of your sales revenue.',
     plans: [
       {
-        name: 'Free',
-        price: '$0',
+        name: 'Starter',
+        price: '£29',
         period: '/month',
-        description: 'Perfect for individuals and testing',
+        description: 'For tutors starting out with a small, focused student group.',
         features: [
-          'Up to 3 agents',
-          '1,000 tasks/month',
-          'Basic integrations',
-          'Email support',
+          'Branded Student Portal',
+          'Course Content Hosting',
+          'Stripe & PayPal Integration',
+          'Direct Email Support',
+          'Lernit Subdomain',
         ],
-        cta: {
-          text: 'Get Started',
-          href: '#contact',
-        },
+        cta: { text: 'Start Now', href: '#contact' },
         featured: false,
       },
       {
-        name: 'Pro',
-        price: '$49',
+        name: 'Professional',
+        price: '£49',
         period: '/month',
-        description: 'For growing teams and businesses',
+        description: 'The standard for serious independent tutors.',
         badge: 'MOST POPULAR',
         features: [
-          'Unlimited agents',
-          '50,000 tasks/month',
-          'All integrations',
-          'Priority support',
-          'Advanced analytics',
-          'Team collaboration',
+          'Unlimited Student Accounts',
+          'Custom Domain Name',
+          'Full Custom Branding',
+          'Priority Telegram Support',
+          'Weekly Site Backups',
+          'Automated Student Onboarding',
         ],
-        cta: {
-          text: 'Start Free Trial',
-          href: '#contact',
-        },
+        cta: { text: 'Go Pro', href: '#contact' },
         featured: true,
       },
       {
         name: 'Enterprise',
-        price: 'Custom',
-        period: '',
-        description: 'For large-scale operations',
+        price: '£99',
+        period: '/month',
+        description: 'For tutoring businesses with multiple teachers.',
         features: [
-          'Unlimited everything',
-          'Custom integrations',
-          'Dedicated support',
-          'SLA guarantee',
-          'On-premise option',
-          'Custom training',
+          'Multi-Teacher Logins',
+          'Custom Student Reports',
+          'We Upload Your Content',
+          '1-on-1 Strategy Calls',
+          'Priority Telegram Support',
+          'Email Automations',
         ],
-        cta: {
-          text: 'Contact Sales',
-          href: '#contact',
-        },
+        cta: { text: 'Talk to Us', href: '#contact' },
         featured: false,
       },
     ],
@@ -179,8 +175,14 @@ export const siteConfig = {
   // FAQ
   // ============================================
   faq: {
-    title: 'Frequently Asked Questions',
-    subtitle: 'Everything you need to know about AI Agent Platform',
+    title: 'Common Questions',
+    subtitle: 'Everything you need to know about your platform',
+    items: [
+      { question: 'How long does setup take?', answer: 'Your platform is usually live within 24 hours.' },
+      { question: 'Do I own my domain?', answer: 'Yes, we connect to any domain you own.' },
+      { question: 'How do I get paid?', answer: 'Instantly via Stripe or PayPal integrations.' },
+      { question: 'Are there contracts?', answer: 'No, it is a rolling monthly subscription.' }
+    ]
   },
 
   // ============================================
@@ -188,38 +190,21 @@ export const siteConfig = {
   // ============================================
   contact: {
     title: 'Start Building Today',
-    subtitle:
-      'Join thousands of teams using AI agents to automate their workflows. Get started in minutes with our free tier.',
+    subtitle: 'Join the educators who own their student experience.',
+    email: 'hello@lernit.io',
     benefits: [
-      'No credit card required',
-      'Setup in under 5 minutes',
-      'Cancel anytime',
-      '24/7 customer support',
+      'Keep 100% of your sales',
+      'Own your student data',
+      'Fixed monthly pricing',
+      'Direct Human support',
     ],
-    email: 'hello@aiagentplatform.com',
     form: {
-      cta: 'Get Started Free',
+      cta: 'Get Started',
       fields: {
-        name: {
-          label: 'Full Name',
-          placeholder: 'John Doe',
-          required: true,
-        },
-        email: {
-          label: 'Work Email',
-          placeholder: 'john@company.com',
-          required: true,
-        },
-        company: {
-          label: 'Company',
-          placeholder: 'Your Company Inc.',
-          required: false,
-        },
-        message: {
-          label: 'What would you like to automate?',
-          placeholder: 'Tell us about your workflow and automation needs...',
-          required: false,
-        },
+        name: { label: 'Full Name', placeholder: 'John Doe', required: true },
+        email: { label: 'Email Address', placeholder: 'john@tutor.com', required: true },
+        company: { label: 'Platform Name', placeholder: 'e.g. Smith Academy', required: false },
+        message: { label: 'Message', placeholder: 'Tell us about your teaching...', required: false },
       },
     },
   },
@@ -228,46 +213,28 @@ export const siteConfig = {
   // FOOTER
   // ============================================
   footer: {
-    tagline:
-      'Intelligent automation for modern teams. Transform your workflow with AI.',
+    tagline: 'Bespoke learning platforms for independent tutors.',
+    copyright: `Lernit.io ${new Date().getFullYear()}. All rights reserved.`,
     columns: [
       {
-        title: 'Product',
+        title: 'Platform',
         links: [
           { name: 'Features', href: '#features' },
           { name: 'Pricing', href: '#pricing' },
-          { name: 'Integrations', href: '#' },
-          { name: 'API Docs', href: '#' },
-          { name: 'Changelog', href: '#' },
+          { name: 'Process', href: '#how-it-works' },
         ],
       },
       {
-        title: 'Company',
+        title: 'Support',
         links: [
-          { name: 'About Us', href: '#' },
-          { name: 'Blog', href: '#' },
-          { name: 'Careers', href: '#' },
-          { name: 'Press Kit', href: '#' },
-          { name: 'Contact', href: '#contact' },
-        ],
-      },
-      {
-        title: 'Legal',
-        links: [
-          { name: 'Privacy Policy', href: '#' },
-          { name: 'Terms of Service', href: '#' },
-          { name: 'Cookie Policy', href: '#' },
-          { name: 'Security', href: '#' },
-          { name: 'Compliance', href: '#' },
+          { name: 'Email Us', href: 'mailto:hello@lernit.io' },
+          { name: 'FAQ', href: '#faq' },
         ],
       },
     ],
     social: [
       { name: 'Twitter', href: '#', icon: 'twitter' },
-      { name: 'GitHub', href: '#', icon: 'github' },
-      { name: 'Dribbble', href: '#', icon: 'dribbble' },
       { name: 'LinkedIn', href: '#', icon: 'linkedin' },
     ],
-    copyright: `${new Date().getFullYear()} AI Agent Platform. All rights reserved.`,
-  },
+  }
 };
