@@ -68,7 +68,12 @@ import { siteConfig } from '../config.ts';
 <style>
   .no-scrollbar::-webkit-scrollbar { display: none; }
   .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-  .dot-active { background-color: #2d3446 !important; width: 1rem !important; border-radius: 4px; }
+  
+  /* Simplified Active State */
+  .dot-active { 
+    background-color: #2d3446 !important; 
+    opacity: 1;
+  }
 </style>
 
 <script>
@@ -80,8 +85,8 @@ import { siteConfig } from '../config.ts';
 
     const updateDots = () => {
       const scrollPos = track.scrollLeft;
-      const width = track.offsetWidth;
-      const activeIndex = Math.round(scrollPos / width);
+      const cardWidth = track.querySelector('div').offsetWidth + 16; // Width + gap
+      const activeIndex = Math.round(scrollPos / cardWidth);
 
       dots.forEach((dot, i) => {
         if (i === activeIndex) {
@@ -93,7 +98,6 @@ import { siteConfig } from '../config.ts';
     };
 
     track.addEventListener('scroll', updateDots);
-    // Initial call to set first dot
     updateDots();
   }
 
