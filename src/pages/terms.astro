@@ -1,40 +1,25 @@
 ---
 import '../styles/globals.css';
 import { siteConfig } from '../config.ts';
-import Navigation from '../components/Navigation.astro';
+import SubNavigation from '../components/Navigation.astro'; // Use updated Navigation for consistency or SubNavigation as created
 import Footer from '../components/Footer.astro';
 ---
 
 <!doctype html>
-<html lang="en" class="scroll-smooth">
+<html lang="en-GB" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-
     <title>Terms of Service | {siteConfig.site.title}</title>
     <meta name="description" content={siteConfig.site.description} />
-    <meta name="keywords" content={siteConfig.site.keywords} />
-
-    <meta property="og:title" content={`Terms of Service | ${siteConfig.site.ogTitle}`} />
-    <meta property="og:description" content={siteConfig.site.ogDescription} />
+    <meta property="og:title" content={`Terms | ${siteConfig.site.ogTitle}`} />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="/screenshot.jpeg" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-
-    <meta name="twitter:card" content={siteConfig.site.twitterCard} />
-    <meta name="twitter:title" content={`Terms of Service | ${siteConfig.site.twitterTitle}`} />
-    <meta name="twitter:description" content={siteConfig.site.twitterDescription} />
-    <meta name="twitter:image" content="/og-image.png" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet" />
   </head>
 
   <body class="text-brand-charcoal bg-[#f9f7f2] font-sans antialiased">
-    <Navigation />
+    <SubNavigation />
     
     <main class="pt-40 pb-24 px-4">
       <div class="mx-auto max-w-4xl">
@@ -42,20 +27,35 @@ import Footer from '../components/Footer.astro';
           Terms of Service
         </h1>
         
-        <div class="space-y-10 uppercase text-[11px] tracking-widest leading-relaxed opacity-90">
-          <section class="border-l-2 border-brand-mint pl-6">
-            <h2 class="text-xl font-black mb-4 italic">01. Public Offer</h2>
-            <p>These Terms of Service constitute a public offer by Jones Group LLC, a registered Ukrainian entity, in accordance with the Civil Code of Ukraine. Use of the platform signifies unconditional acceptance.</p>
+        <div class="space-y-12 uppercase text-[11px] tracking-widest leading-relaxed opacity-90">
+          <section class="border-l-4 border-brand-mint pl-8">
+            <h2 class="text-2xl font-black mb-6 italic">01. Public Offer Agreement</h2>
+            <p>Accessing Lernit.io constitutes a binding legal agreement. This document serves as a **Public Offer (Public Agreement)** under Articles 633 and 641 of the Civil Code of Ukraine. By utilising our platforms, you—the User—accept the terms provided by **Jones Group LLC** without reservation.</p>
           </section>
 
-          <section class="border-l-2 border-brand-mint pl-6">
-            <h2 class="text-xl font-black mb-4 italic">02. Force Majeure</h2>
-            <p>Jones Group LLC shall not be liable for service interruptions caused by Force Majeure events within the territory of Ukraine, including infrastructure failures or military actions.</p>
+          <section class="border-l-4 border-brand-mint pl-8">
+            <h2 class="text-2xl font-black mb-6 italic">02. Intellectual Property & Code Protection</h2>
+            <p>All software architecture, visual assets, proprietary logic, and "bespoke" elements are the sole property of **Jones Group LLC**. You are granted a revocable, non-exclusive licence to use the platform. Any attempt to reverse-engineer, scrape, or redistribute our code is a criminal violation of the Law of Ukraine "On Copyright and Related Rights."</p>
           </section>
 
-          <section class="border-l-2 border-brand-mint pl-6">
-            <h2 class="text-xl font-black mb-4 italic">03. Jurisdiction</h2>
-            <p>This agreement is governed by the legislation of Ukraine. Disputes shall be referred to the Commercial Courts of Ukraine for final resolution.</p>
+          <section class="border-l-4 border-brand-mint pl-8">
+            <h2 class="text-2xl font-black mb-6 italic">03. Force Majeure & Continuity</h2>
+            <p>Jones Group LLC operates in a region currently subject to martial law. While we maintain a 99.9% uptime target, we are not liable for service interruptions caused by catastrophic infrastructure failure, kinetic military action, or state-level cyber-interruption. We provide no warranties, express or implied, regarding the platform's suitability for specific pedagogical outcomes.</p>
+          </section>
+
+          <section class="border-l-4 border-brand-mint pl-6">
+            <h2 class="text-2xl font-black mb-6 italic">04. Commercial Conduct</h2>
+            <p>Users must use Lernit.io for lawful educational purposes. We reserve the right to terminate access immediately, without refund, if the platform is used to host illegal content, facilitate fraud, or harass individuals. Payments processed by Jones Group LLC are final and subject to our internal refund policies as dictated by Ukrainian commercial law.</p>
+          </section>
+
+          <section class="border-l-4 border-brand-mint pl-8">
+            <h2 class="text-2xl font-black mb-6 italic">05. Jurisdiction & Disputes</h2>
+            <p>These terms are governed by the laws of Ukraine. In the event of a dispute that cannot be resolved via mutual negotiation, the matter shall be settled exclusively within the Commercial Courts of Ukraine. You waive any right to participate in class-action lawsuits against Jones Group LLC.</p>
+          </section>
+
+          <section class="border-l-4 border-brand-mint pl-8">
+            <h2 class="text-2xl font-black mb-6 italic">06. Revisions</h2>
+            <p>Jones Group LLC reserves the right to modify these terms at any time. Continued use of the platform following such changes constitutes acceptance of the revised legal framework.</p>
           </section>
         </div>
       </div>

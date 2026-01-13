@@ -1,40 +1,28 @@
 ---
 import '../styles/globals.css';
 import { siteConfig } from '../config.ts';
-import Navigation from '../components/Navigation.astro';
+import SubNavigation from '../components/SubNavigation.astro';
 import Footer from '../components/Footer.astro';
 ---
 
 <!doctype html>
-<html lang="en" class="scroll-smooth">
+<html lang="en-GB" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-
     <title>Privacy Policy | {siteConfig.site.title}</title>
     <meta name="description" content={siteConfig.site.description} />
-    <meta name="keywords" content={siteConfig.site.keywords} />
-
-    <meta property="og:title" content={`Privacy Policy | ${siteConfig.site.ogTitle}`} />
-    <meta property="og:description" content={siteConfig.site.ogDescription} />
+    <meta property="og:title" content={`Privacy | ${siteConfig.site.ogTitle}`} />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="/screenshot.jpeg" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-
-    <meta name="twitter:card" content={siteConfig.site.twitterCard} />
-    <meta name="twitter:title" content={`Privacy Policy | ${siteConfig.site.twitterTitle}`} />
-    <meta name="twitter:description" content={siteConfig.site.twitterDescription} />
-    <meta name="twitter:image" content="/og-image.png" />
-
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet" />
   </head>
 
   <body class="text-brand-charcoal bg-[#f9f7f2] font-sans antialiased">
-    <Navigation />
+    <SubNavigation />
     
     <main class="pt-40 pb-24 px-4">
       <div class="mx-auto max-w-4xl">
@@ -42,15 +30,38 @@ import Footer from '../components/Footer.astro';
           Privacy Policy
         </h1>
         
-        <div class="space-y-10 uppercase text-[11px] tracking-widest leading-relaxed opacity-90">
-          <section class="border-l-2 border-brand-charcoal pl-6">
-            <h2 class="text-xl font-black mb-4 italic">01. Data Controller</h2>
-            <p>Lernit.io is owned and operated by Jones Group LLC, a Limited Liability Company registered in Ukraine. Jones Group LLC acts as the primary data controller in accordance with the Law of Ukraine "On Personal Data Protection" No. 2297-VI.</p>
+        <div class="space-y-12 uppercase text-[11px] tracking-widest leading-relaxed opacity-90">
+          <section class="border-l-4 border-brand-charcoal pl-8">
+            <h2 class="text-2xl font-black mb-6 italic">01. Data Controller Identity</h2>
+            <p class="mb-4">Lernit.io is a digital product owned and managed by **Jones Group LLC**, a Limited Liability Company duly registered and operating under the legislation of Ukraine. For all purposes related to the Law of Ukraine "On Personal Data Protection" and the UK/EU General Data Protection Regulation (GDPR), Jones Group LLC is the primary Data Controller.</p>
+            <p>Our commitment is to ensure that your private information remains private, stored on encrypted infrastructure and processed only for the delivery of bespoke tutoring environments.</p>
           </section>
 
-          <section class="border-l-2 border-brand-charcoal pl-6">
-            <h2 class="text-xl font-black mb-4 italic">02. Subject Rights</h2>
-            <p>Under Ukrainian law, you maintain the right to access your stored data, demand its rectification, and request its deletion if processing is no longer required. For all enquiries, contact Jones Group LLC via jonesgroup.tech.</p>
+          <section class="border-l-4 border-brand-charcoal pl-8">
+            <h2 class="text-2xl font-black mb-6 italic">02. Information We Harvest</h2>
+            <p class="mb-4">We process data that is strictly necessary for platform functionality. This includes:</p>
+            <ul class="list-disc list-inside space-y-2 ml-4">
+              <li>**Identity Data:** Full name, business aliases, and professional credentials.</li>
+              <li>**Contact Data:** Billing addresses, email identifiers, and telecommunication numbers.</li>
+              <li>**Technical Data:** IP addresses, browser fingerprints, and hardware metadata used for security audits.</li>
+              <li>**Usage Data:** Granular logs of interactions within the Lernit.io ecosystem to prevent unauthorised access.</li>
+            </ul>
+          </section>
+
+          <section class="border-l-4 border-brand-charcoal pl-8">
+            <h2 class="text-2xl font-black mb-6 italic">03. Ukrainian & International Legal Basis</h2>
+            <p class="mb-4">Jones Group LLC processes data under the following legal frameworks:</p>
+            <p>**Consent:** Explicit permission granted by you during account creation. **Contractual Necessity:** The data is required to provide the service you have purchased. **Legal Obligation:** Compliance with Ukrainian tax and accounting regulations. **Vital Interests:** Protection of the platform and users during periods of regional instability or cyber-warfare.</p>
+          </section>
+
+          <section class="border-l-4 border-brand-charcoal pl-8">
+            <h2 class="text-2xl font-black mb-6 italic">04. Data Sovereignty & Transfers</h2>
+            <p>Your data may be stored on servers located within the European Economic Area (EEA) or Ukraine. In all instances, Jones Group LLC maintains strict oversight. We do not sell, rent, or trade your personal data with third-party advertising conglomerates. Data is shared only with essential infrastructure providers (e.g., payment gateways and hosting providers) under strict Confidentiality Agreements.</p>
+          </section>
+
+          <section class="border-l-4 border-brand-charcoal pl-8">
+            <h2 class="text-2xl font-black mb-6 italic">05. Subject Rights (Article 8 UA)</h2>
+            <p>Under Ukrainian law and international standards, you have the right to request access to your data, demand its immediate rectification, or request its total erasure from our databases. To initiate a Subject Access Request, contact the Jones Group LLC legal desk via jonesgroup.tech.</p>
           </section>
         </div>
       </div>
