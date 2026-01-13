@@ -3,38 +3,37 @@ import { siteConfig } from '../config.ts';
 import { Icon } from 'astro-icon/components';
 
 const iconMap = {
-  twitter: 'simple-icons:x',
-  github: 'simple-icons:github',
+  instagram: 'simple-icons:instagram',
+  facebook: 'simple-icons:facebook',
   linkedin: 'simple-icons:linkedin',
 };
 ---
 
-<footer class="relative bg-[#fdfcf6] border-t-4 border-brand-charcoal px-4 py-12 text-brand-charcoal sm:px-6 lg:px-8 overflow-hidden">
+<footer class="relative bg-[#fdfcf6] border-t-4 border-brand-charcoal px-4 py-12 text-brand-charcoal sm:px-6 lg:px-8">
   
   <div class="absolute inset-0 opacity-[0.05] mix-blend-multiply pointer-events-none" style="background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');"></div>
 
-  <div class="mx-auto max-w-7xl relative z-10">
-    <div class="flex flex-col md:flex-row justify-between items-start gap-10">
+  <div class="mx-auto max-w-5xl relative z-10"> <div class="grid grid-cols-1 gap-10 md:grid-cols-12 items-start">
       
-      <div class="max-w-xs">
+      <div class="md:col-span-5">
         <img 
           src="/logo.svg" 
           alt={siteConfig.site.name} 
           class="h-9 w-auto mb-4" 
         />
-        <p class="text-base font-semibold uppercase tracking-tight opacity-70 leading-snug">
-          {siteConfig.footer.tagline}
+        <p class="text-lg font-black uppercase italic tracking-tighter leading-none opacity-90 max-w-[200px]">
+          Bespoke learning platforms for independent tutors.
         </p>
       </div>
 
-      <div class="flex gap-12 sm:gap-20">
+      <div class="grid grid-cols-2 gap-8 md:col-span-7">
         {
           siteConfig.footer.columns.map((column) => (
             <div>
-              <h4 class="mb-4 text-[10px] font-black uppercase tracking-widest opacity-40">
+              <h4 class="mb-3 text-[10px] font-black uppercase tracking-widest opacity-40">
                 {column.title}
               </h4>
-              <ul class="space-y-2">
+              <ul class="space-y-1.5">
                 {column.links.map((link) => (
                   <li>
                     <a 
@@ -52,12 +51,15 @@ const iconMap = {
       </div>
     </div>
 
-    <div class="mt-12 pt-8 border-t border-brand-charcoal/10 flex flex-col md:flex-row items-center justify-between gap-6">
-      <div class="flex items-center space-x-4">
+    <div class="mt-12 pt-6 border-t border-brand-charcoal/10 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex flex-wrap items-center justify-center md:justify-start gap-x-4 gap-y-2">
         <p class="text-[10px] font-bold uppercase tracking-widest opacity-40">
           &copy; {siteConfig.footer.copyright}
         </p>
-        <span class="text-brand-charcoal/20">|</span>
+        <span class="hidden md:inline text-brand-charcoal/10">|</span>
+        <a href="/privacy" class="text-[10px] font-bold uppercase tracking-widest opacity-40 hover:opacity-100 transition-opacity">Privacy Policy</a>
+        <a href="/terms" class="text-[10px] font-bold uppercase tracking-widest opacity-40 hover:opacity-100 transition-opacity">Terms</a>
+        <span class="hidden md:inline text-brand-charcoal/10">|</span>
         <a 
           href="https://jonesgroup.tech" 
           target="_blank" 
@@ -69,17 +71,15 @@ const iconMap = {
       </div>
 
       <div class="flex space-x-5">
-        {
-          siteConfig.footer.social.map((social) => (
-            <a
-              href={social.href}
-              class="text-brand-charcoal/40 hover:text-brand-charcoal transition-colors"
-              aria-label={social.name}
-            >
-              <Icon name={iconMap[social.icon] || 'heroicons:link'} class="h-5 w-5" />
-            </a>
-          ) )
-        }
+        <a href="#" class="text-brand-charcoal/40 hover:text-brand-charcoal transition-colors">
+          <Icon name="simple-icons:instagram" class="h-5 w-5" />
+        </a>
+        <a href="#" class="text-brand-charcoal/40 hover:text-brand-charcoal transition-colors">
+          <Icon name="simple-icons:facebook" class="h-5 w-5" />
+        </a>
+        <a href="#" class="text-brand-charcoal/40 hover:text-brand-charcoal transition-colors">
+          <Icon name="simple-icons:linkedin" class="h-5 w-5" />
+        </a>
       </div>
     </div>
   </div>
