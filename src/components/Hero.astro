@@ -3,58 +3,58 @@ import { siteConfig } from '../config.ts';
 ---
 
 <section
-  class="relative overflow-hidden px-4 pt-32 pb-20 sm:px-6 lg:px-8 border-b-2 border-brand-charcoal bg-slate-50"
+  class="relative overflow-hidden px-4 pt-28 pb-16 sm:px-6 lg:px-8 lg:pt-32 lg:pb-20 border-b-4 border-brand-charcoal bg-slate-50"
   style="background-image: radial-gradient(circle, #d1d5db 1px, transparent 1px); background-size: 24px 24px;"
 >
-  {/* Side accent bars */}
-  <div class="bg-brand-charcoal absolute top-32 left-0 h-32 w-1"></div>
-  <div class="bg-brand-charcoal absolute top-32 right-0 h-32 w-1"></div>
+  {/* Side accent bars - Hidden on mobile to prevent overflow issues */}
+  <div class="hidden md:block bg-brand-charcoal absolute top-32 left-0 h-32 w-1"></div>
+  <div class="hidden md:block bg-brand-charcoal absolute top-32 right-0 h-32 w-1"></div>
 
   <div class="mx-auto max-w-7xl relative z-10">
     <div class="mx-auto max-w-4xl text-center">
       <h1
-        class="text-brand-charcoal scroll-fade-up mb-6 text-5xl leading-tight font-extrabold sm:text-6xl lg:text-7xl"
+        class="text-brand-charcoal scroll-fade-up mb-6 text-4xl leading-tight font-extrabold sm:text-6xl lg:text-7xl tracking-tight"
       >
         {siteConfig.hero.headline}<br />
         <span class="relative inline-block mt-2">
           <span class="relative z-10 px-2">{siteConfig.hero.subheadline}</span>
-          <span class="absolute bottom-1 left-0 h-full w-full bg-brand-mint -rotate-1 z-0 rounded-sm"></span>
+          <span class="absolute bottom-1 left-0 h-[80%] w-full bg-brand-mint -rotate-1 z-0 rounded-sm"></span>
         </span>
       </h1>
       
       <p
-        class="text-brand-charcoal/80 scroll-fade-up mb-10 text-xl leading-relaxed sm:text-2xl"
+        class="text-brand-charcoal/80 scroll-fade-up mb-10 text-lg leading-relaxed sm:text-xl lg:text-2xl px-2 md:px-0"
       >
         {siteConfig.hero.description}
       </p>
       
       <div
-        class="scroll-fade-up mb-16 flex flex-col justify-center gap-4 sm:flex-row"
+        class="scroll-fade-up mb-16 flex flex-col justify-center gap-4 sm:flex-row px-4 sm:px-0"
       >
         <a
           href={siteConfig.hero.cta.primary.href}
-          class="bg-brand-mint border-2 border-brand-charcoal rounded-lg px-8 py-4 font-semibold text-brand-charcoal shadow-[4px_4px_0px_0px_rgba(45,52,70,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all"
+          class="bg-brand-mint border-2 border-brand-charcoal rounded-lg px-8 py-4 font-bold text-brand-charcoal shadow-[4px_4px_0px_0px_rgba(45,52,70,1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none md:hover:translate-x-[2px] md:hover:translate-y-[2px] md:hover:shadow-none transition-all text-center"
         >
           {siteConfig.hero.cta.primary.text}
         </a>
         <a
           href={siteConfig.hero.cta.secondary.href}
-          class="border-brand-charcoal text-brand-charcoal rounded-lg border-2 bg-white px-8 py-4 font-semibold shadow-[4px_4px_0px_0px_rgba(45,52,70,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all"
+          class="border-brand-charcoal text-brand-charcoal rounded-lg border-2 bg-white px-8 py-4 font-bold shadow-[4px_4px_0px_0px_rgba(45,52,70,1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none md:hover:translate-x-[2px] md:hover:translate-y-[2px] md:hover:shadow-none transition-all text-center"
         >
           {siteConfig.hero.cta.secondary.text}
         </a>
       </div>
 
       <div
-        class="mx-auto grid max-w-4xl grid-cols-1 md:grid-cols-3 gap-6 pt-10"
+        class="mx-auto grid max-w-4xl grid-cols-1 md:grid-cols-3 gap-6 pt-6 md:pt-10"
       >
         {
           siteConfig.hero.stats.map((stat, index) => (
-            <div class={`scroll-fade-up stagger-${index + 1} bg-brand-lavender border-2 border-brand-charcoal p-8 rounded-xl shadow-[6px_6px_0px_0px_rgba(45,52,70,1)]`}>
-              <div class="text-brand-charcoal mb-2 text-4xl font-bold">
+            <div class={`scroll-fade-up stagger-${index + 1} bg-brand-lavender border-2 border-brand-charcoal p-6 md:p-8 rounded-xl shadow-[6px_6px_0px_0px_rgba(45,52,70,1)]`}>
+              <div class="text-brand-charcoal mb-1 text-3xl md:text-4xl font-black">
                 {stat.value}
               </div>
-              <div class="text-brand-charcoal/70 text-sm tracking-wide uppercase font-bold">
+              <div class="text-brand-charcoal/70 text-[10px] md:text-xs tracking-widest uppercase font-black">
                 {stat.label}
               </div>
             </div>
