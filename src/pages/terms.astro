@@ -6,36 +6,46 @@ import Footer from '../components/Footer.astro';
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en-GB">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Terms of Service | {siteConfig.site.name}</title>
+    <title>Terms & Conditions | {siteConfig.site.name}</title>
     <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet" />
   </head>
-  <body class="text-brand-charcoal bg-white font-sans antialiased">
+  <body class="text-brand-charcoal bg-[#f2f4f7] font-sans antialiased">
     <Navigation />
     
-    <main class="pt-32 pb-20 px-4">
-      <div class="mx-auto max-w-3xl">
-        <h1 class="text-4xl font-black uppercase italic tracking-tighter mb-8">
+    <main class="pt-40 pb-24 px-4">
+      <div class="mx-auto max-w-4xl">
+        <h1 class="text-6xl font-black uppercase italic tracking-tighter mb-12">
           Terms of Service
         </h1>
         
-        <div class="space-y-6 uppercase text-xs tracking-wider leading-relaxed opacity-80">
-          <section>
-            <h2 class="text-lg font-black mb-2 italic">1. Agreement</h2>
-            <p>By accessing Lernit.io, you agree to be bound by these terms. These services are provided as part of the Jones Group digital ecosystem.</p>
+        <div class="space-y-10 uppercase text-[11px] tracking-widest leading-relaxed opacity-90">
+          <section class="border-l-2 border-brand-mint pl-6">
+            <h2 class="text-xl font-black mb-4 italic">01. Acceptance of Terms</h2>
+            <p>By accessing Lernit.io, you acknowledge that you have read, understood, and agreed to be bound by these terms. If you do not agree to these terms, you must cease use of our platforms immediately. These terms constitute a legally binding agreement between you and Jones Group.</p>
           </section>
 
-          <section>
-            <h2 class="text-lg font-black mb-2 italic">2. Use of Service</h2>
-            <p>Independent tutors are granted a non-exclusive licence to use our platforms for educational purposes. Any misuse will result in termination of service.</p>
+          <section class="border-l-2 border-brand-mint pl-6">
+            <h2 class="text-xl font-black mb-4 italic">02. Platform Usage</h2>
+            <p>Lernit.io provides bespoke learning infrastructure. You are responsible for ensuring that all persons who access the platform through your internet connection or login credentials are aware of these terms and comply with them. We reserve the right to withdraw or amend the service without notice.</p>
           </section>
 
-          <section>
-            <h2 class="text-lg font-black mb-2 italic">3. Property</h2>
-            <p>All platform architecture and design elements remain the exclusive property of the Jones Group.</p>
+          <section class="border-l-2 border-brand-mint pl-6">
+            <h2 class="text-xl font-black mb-4 italic">03. Intellectual Property Rights</h2>
+            <p>We are the owner or the licensee of all intellectual property rights in our site, and in the material published on it. Those works are protected by copyright laws and treaties around the world. All such rights are reserved. You must not use any part of the content on our site for commercial purposes without obtaining a licence to do so from Jones Group.</p>
+          </section>
+
+          <section class="border-l-2 border-brand-mint pl-6">
+            <h2 class="text-xl font-black mb-4 italic">04. Limitation of Liability</h2>
+            <p>To the extent permitted by law, we exclude all conditions, warranties, representations or other terms which may apply to our site or any content on it, whether express or implied. We will not be liable for any loss or damage, whether in contract, tort (including negligence), breach of statutory duty, or otherwise, arising under or in connection with the use of, or inability to use, our site.</p>
+          </section>
+
+          <section class="border-l-2 border-brand-mint pl-6">
+            <h2 class="text-xl font-black mb-4 italic">05. Governing Law</h2>
+            <p>These terms, their subject matter and their formation, are governed by English law. You and we both agree that the courts of England and Wales will have exclusive jurisdiction.</p>
           </section>
         </div>
       </div>
