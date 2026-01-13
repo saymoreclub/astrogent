@@ -8,19 +8,19 @@ import { siteConfig } from '../config.ts';
 >
   <div class="mx-auto max-w-7xl relative z-10">
     <div class="mx-auto max-w-4xl text-center">
-      <h1 class="text-brand-charcoal mb-6 text-5xl leading-tight font-extrabold sm:text-6xl lg:text-7xl tracking-tight">
+      <h1 class="text-brand-charcoal mb-6 text-5xl leading-[1.1] font-extrabold sm:text-7xl lg:text-8xl tracking-tight">
         {siteConfig.hero.headline}<br />
         <span class="relative inline-block mt-2">
-          <span class="relative z-10 px-2">{siteConfig.hero.subheadline}</span>
-          <span class="absolute bottom-1 left-0 h-[80%] w-full bg-brand-mint -rotate-1 z-0 rounded-sm"></span>
+          <span class="relative z-10 px-4">{siteConfig.hero.subheadline}</span>
+          <span class="absolute bottom-2 left-0 h-[75%] w-full bg-brand-mint -rotate-1 z-0 rounded-sm shadow-[2px_2px_0px_0px_rgba(45,52,70,1)]"></span>
         </span>
       </h1>
       
-      <p class="text-brand-charcoal/80 mb-10 text-xl leading-relaxed sm:text-2xl">
+      <p class="text-brand-charcoal/80 mb-10 text-xl leading-relaxed sm:text-2xl max-w-2xl mx-auto">
         {siteConfig.hero.description}
       </p>
       
-      <div class="mb-16 flex flex-col justify-center gap-4 sm:flex-row px-4 sm:px-0">
+      <div class="mb-20 flex flex-col justify-center gap-4 sm:flex-row px-4 sm:px-0">
         <a 
           href={siteConfig.hero.cta.primary.href} 
           class="bg-brand-mint border-2 border-brand-charcoal rounded-lg px-8 py-4 font-bold text-brand-charcoal shadow-[4px_4px_0px_0px_rgba(45,52,70,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all text-center uppercase tracking-tight"
@@ -59,43 +59,3 @@ import { siteConfig } from '../config.ts';
     </div>
   </div>
 </section>
-
-<style>
-  .no-scrollbar::-webkit-scrollbar { display: none; }
-  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-
-  @media (max-width: 767px) {
-    #hero-stats-track {
-      scroll-behavior: smooth;
-    }
-  }
-</style>
-
-<script>
-  function initSimpleSlider() {
-    const track = document.getElementById('hero-stats-track');
-    if (!track || window.innerWidth >= 768) return;
-
-    const cards = track.children;
-    let index = 0;
-
-    function autoMove() {
-      index++;
-      if (index >= cards.length) {
-        index = 0;
-      }
-      
-      const cardWidth = cards[0].offsetWidth + 24; 
-      track.scrollTo({
-        left: index * cardWidth,
-        behavior: 'smooth'
-      });
-    }
-
-    let interval = setInterval(autoMove, 2500);
-    track.addEventListener('touchstart', () => clearInterval(interval), { passive: true });
-  }
-
-  document.addEventListener('DOMContentLoaded', initSimpleSlider);
-  document.addEventListener('astro:after-swap', initSimpleSlider);
-</script>
