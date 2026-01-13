@@ -1,14 +1,14 @@
 ---
 import { siteConfig } from '../config.ts';
+
+// We duplicate the stats to create the illusion of an infinite loop on mobile
+const mobileStats = [...siteConfig.hero.stats, ...siteConfig.hero.stats];
 ---
 
 <section
   class="relative overflow-hidden px-4 pt-28 pb-16 sm:px-6 lg:px-8 lg:pt-32 lg:pb-20 border-b-4 border-brand-charcoal bg-slate-50"
   style="background-image: radial-gradient(circle, #d1d5db 1px, transparent 1px); background-size: 24px 24px;"
 >
-  <div class="hidden md:block bg-brand-charcoal absolute top-32 left-0 h-32 w-1"></div>
-  <div class="hidden md:block bg-brand-charcoal absolute top-32 right-0 h-32 w-1"></div>
-
   <div class="mx-auto max-w-7xl relative z-10">
     <div class="mx-auto max-w-4xl text-center">
       <h1 class="text-brand-charcoal mb-6 text-5xl leading-tight font-extrabold sm:text-6xl lg:text-7xl tracking-tight">
@@ -19,27 +19,21 @@ import { siteConfig } from '../config.ts';
         </span>
       </h1>
       
-      <p class="text-brand-charcoal/80 mb-10 text-xl leading-relaxed sm:text-2xl px-2 md:px-0">
+      <p class="text-brand-charcoal/80 mb-10 text-xl leading-relaxed sm:text-2xl">
         {siteConfig.hero.description}
       </p>
       
-      <div class="mb-16 flex flex-col justify-center gap-4 sm:flex-row px-4 sm:px-0">
-        <a href={siteConfig.hero.cta.primary.href} class="bg-brand-mint border-2 border-brand-charcoal rounded-lg px-8 py-4 font-bold text-brand-charcoal shadow-[4px_4px_0px_0px_rgba(45,52,70,1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all text-center">
-          {siteConfig.hero.cta.primary.text}
-        </a>
-        <a href={siteConfig.hero.cta.secondary.href} class="border-brand-charcoal text-brand-charcoal rounded-lg border-2 bg-white px-8 py-4 font-bold shadow-[4px_4px_0px_0px_rgba(45,52,70,1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all text-center">
-          {siteConfig.hero.cta.secondary.text}
-        </a>
-      </div>
-
       <div class="relative w-full overflow-hidden md:overflow-visible">
         <div 
-          id="stats-slider"
-          class="flex md:grid md:grid-cols-3 gap-6 overflow-x-auto snap-x snap-mandatory no-scrollbar pb-8 px-4 -mx-4 md:px-0 md:mx-0 scroll-smooth"
+          id="hero-stats-track"
+          class="flex md:grid md:grid-cols-3 gap-6 overflow-x-auto snap-x snap-mandatory no-scrollbar pb-8 px-4 -mx-4 md:px-0 md:mx-0"
         >
           {
-            siteConfig.hero.stats.map((stat) => (
-              <div class="flex-none w-[85%] md:w-auto snap-center bg-brand-lavender border-2 border-brand-charcoal p-8 rounded-xl shadow-[6px_6px_0px_0px_rgba(45,52,70,1)]">
+            mobileStats.map((stat, index) => (
+              <div 
+                class={`flex-none w-[85%] md:w-auto snap-center bg-brand-lavender border-2 border-brand-charcoal p-8 rounded-xl shadow-[6px_6px_0px_0px_rgba(45,52,70,1)] 
+                ${index >= siteConfig.hero.stats.length ? 'md:hidden' : ''}`}
+              >
                 <div class="text-brand-charcoal mb-2 text-4xl font-black italic">
                   {stat.value}
                 </div>
@@ -58,34 +52,50 @@ import { siteConfig } from '../config.ts';
 <style>
   .no-scrollbar::-webkit-scrollbar { display: none; }
   .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  
+  /* Smooth scrolling only when JS triggers it */
+  #hero-stats-track {
+    scroll-behavior: smooth;
+  }
 </style>
 
 <script>
-  function setupAutoSlider() {
-    const slider = document.getElementById('stats-slider');
-    if (!slider || window.innerWidth >= 768) return;
+  function initInfiniteSlider() {
+    const track = document.getElementById('hero-stats-track');
+    if (!track || window.innerWidth >= 768) return;
 
-    let index = 0;
-    const cards = slider.children;
-    const totalCards = cards.length;
+    const originalCount = 3; // Number of unique stats
+    let currentIndex = 0;
+    
+    function slide() {
+      currentIndex++;
+      const cards = track.children;
+      const cardWidth = cards[0].offsetWidth + 24; // Width + gap
 
-    function nextSlide() {
-      index = (index + 1) % totalCards;
-      const cardWidth = cards[0].offsetWidth + 24; // Card + gap (1.5rem = 24px)
-      slider.scrollTo({
-        left: index * cardWidth,
+      track.scrollTo({
+        left: currentIndex * cardWidth,
         behavior: 'smooth'
       });
+
+      // Infinite Loop Logic: If we reach the start of the duplicate set, 
+      // wait for the animation to finish then snap back to the start
+      if (currentIndex >= originalCount) {
+        setTimeout(() => {
+          track.style.scrollBehavior = 'auto';
+          track.scrollLeft = 0;
+          currentIndex = 0;
+          track.style.scrollBehavior = 'smooth';
+        }, 600); // Matches the smooth scroll duration
+      }
     }
 
-    // Slide every 3 seconds
-    const interval = setInterval(nextSlide, 3000);
+    // Set to 2 seconds for a "quite quick" feel
+    let sliderInterval = setInterval(slide, 2000);
 
-    // Stop auto-slide if user touches it
-    slider.addEventListener('touchstart', () => clearInterval(interval), { passive: true });
+    // Stop on user interaction
+    track.addEventListener('touchstart', () => clearInterval(sliderInterval), { passive: true });
   }
 
-  document.addEventListener('DOMContentLoaded', setupAutoSlider);
-  // Re-run for Astro view transitions
-  document.addEventListener('astro:after-swap', setupAutoSlider);
+  document.addEventListener('DOMContentLoaded', initInfiniteSlider);
+  document.addEventListener('astro:after-swap', initInfiniteSlider);
 </script>
