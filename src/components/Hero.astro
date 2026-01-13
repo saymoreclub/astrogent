@@ -1,9 +1,5 @@
 ---
 import { siteConfig } from '../config.ts';
-
-// Triple the stats to ensure there is always content to the left and right for a seamless loop
-const tripleStats = [...siteConfig.hero.stats, ...siteConfig.hero.stats, ...siteConfig.hero.stats];
-const originalLength = siteConfig.hero.stats.length;
 ---
 
 <section
@@ -24,17 +20,15 @@ const originalLength = siteConfig.hero.stats.length;
         {siteConfig.hero.description}
       </p>
       
-      <div class="relative w-full overflow-hidden md:overflow-visible">
+      <div class="relative w-full overflow-hidden md:overflow-visible md:p-4">
         <div 
           id="hero-stats-track"
-          class="flex md:grid md:grid-cols-3 gap-4 overflow-x-auto snap-x snap-mandatory no-scrollbar pb-8 px-4 -mx-4 md:px-0 md:mx-0"
+          class="flex md:grid md:grid-cols-3 gap-6 overflow-x-auto snap-x snap-mandatory no-scrollbar pb-12 px-4 -mx-4 md:px-0 md:mx-0"
         >
           {
-            tripleStats.map((stat, index) => (
+            siteConfig.hero.stats.map((stat) => (
               <div 
-                class={`flex-none w-[70%] md:w-auto snap-center bg-brand-lavender border-2 border-brand-charcoal p-8 rounded-xl shadow-[6px_6px_0px_0px_rgba(45,52,70,1)] 
-                ${index >= originalLength ? 'md:hidden' : ''}`}
-                data-index={index % originalLength}
+                class="flex-none w-[70%] md:w-auto snap-center bg-brand-lavender border-2 border-brand-charcoal p-8 rounded-xl shadow-[6px_6px_0px_0px_rgba(45,52,70,1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all"
               >
                 <div class="text-brand-charcoal mb-2 text-4xl font-black italic">
                   {stat.value}
@@ -52,51 +46,46 @@ const originalLength = siteConfig.hero.stats.length;
 </section>
 
 <style>
+  /* Clean, non-jittery CSS Scroll logic */
   .no-scrollbar::-webkit-scrollbar { display: none; }
   .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+  @media (max-width: 767px) {
+    #hero-stats-track {
+      scroll-behavior: smooth;
+    }
+  }
 </style>
 
-<script define:vars={{ originalLength }}>
-  function initInfiniteSlider() {
+<script>
+  // Simple, smooth auto-paging without the "teleporting" jitter
+  function initSimpleSlider() {
     const track = document.getElementById('hero-stats-track');
     if (!track || window.innerWidth >= 768) return;
 
     const cards = track.children;
-    const cardWidth = cards[0].offsetWidth + 16; // Width + 1rem gap (16px)
-    
-    // Start the scroll in the middle set of cards so user can scroll left or right
-    track.scrollLeft = cardWidth * originalLength;
+    let index = 0;
 
-    function handleInfiniteScroll() {
-      const scrollPos = track.scrollLeft;
-      const totalWidth = cardWidth * originalLength;
-
-      // If they scroll too far right, snap back to middle
-      if (scrollPos >= totalWidth * 2) {
-        track.scrollLeft = scrollPos - totalWidth;
+    function autoMove() {
+      index++;
+      if (index >= cards.length) {
+        index = 0; // Reset to start
       }
-      // If they scroll too far left, snap to middle
-      if (scrollPos <= 0) {
-        track.scrollLeft = scrollPos + totalWidth;
-      }
-    }
-
-    function autoSlide() {
+      
+      const cardWidth = cards[0].offsetWidth + 24; // Width + gap
       track.scrollTo({
-        left: track.scrollLeft + cardWidth,
+        left: index * cardWidth,
         behavior: 'smooth'
       });
     }
 
-    track.addEventListener('scroll', handleInfiniteScroll);
-    
-    // Quite quick: 2 second interval
-    let sliderInterval = setInterval(autoSlide, 2000);
+    // Set to 2.5s for a brisk but readable pace
+    let interval = setInterval(autoMove, 2500);
 
-    // Pause on interaction
-    track.addEventListener('touchstart', () => clearInterval(sliderInterval), { passive: true });
+    // Stop if the user touches it to prevent fighting the scroll
+    track.addEventListener('touchstart', () => clearInterval(interval), { passive: true });
   }
 
-  document.addEventListener('DOMContentLoaded', initInfiniteSlider);
-  document.addEventListener('astro:after-swap', initInfiniteSlider);
+  document.addEventListener('DOMContentLoaded', initSimpleSlider);
+  document.addEventListener('astro:after-swap', initSimpleSlider);
 </script>
