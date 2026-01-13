@@ -1,6 +1,20 @@
 ---
 import { siteConfig } from '../config.ts';
+import { Icon } from 'astro-icon/components';
 import { featuresContent } from '../content/features';
+
+const iconMap = {
+  lightning: 'heroicons:bolt',
+  code: 'heroicons:code-bracket',
+  chart: 'heroicons:chart-bar',
+  chat: 'heroicons:chat-bubble-left-right',
+  shield: 'heroicons:lock-closed',
+  clock: 'heroicons:clock',
+  brush: 'heroicons:paint-brush',
+  layers: 'heroicons:user-group',
+  zap: 'heroicons:arrow-trending-up',
+  'credit-card': 'heroicons:credit-card',
+};
 
 const featureColours = [
   'bg-brand-lavender',
@@ -21,23 +35,23 @@ const featureColours = [
     <div class="mx-auto mb-16 max-w-3xl text-center">
       <h2 class="text-brand-charcoal mb-6 text-4xl font-extrabold sm:text-5xl tracking-tight uppercase italic">
         <span class="relative inline-block">
-          <span class="relative z-10 px-1">{siteConfig.features?.title || 'Features'}</span>
+          <span class="relative z-10 px-1">{siteConfig.features.title}</span>
           <span class="absolute bottom-1 left-0 h-4 w-full bg-brand-mint/80 z-0"></span>
         </span>
       </h2>
-      <p class="text-brand-charcoal/70 text-lg font-bold">
-        {siteConfig.features?.subtitle}
+      <p class="text-brand-charcoal/70 text-xl font-bold">
+        {siteConfig.features.subtitle}
       </p>
     </div>
 
-    <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 px-2 pb-8">
+    <div class="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3 px-2 pb-8">
       {
-        featuresContent && featuresContent.map((feature, index) => (
+        featuresContent.map((feature, index) => (
           <div
-            class="group bg-white border-2 border-brand-charcoal rounded-xl p-8 shadow-[8px_8px_0px_0px_rgba(45,52,70,1)] hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all"
+            class="group bg-white border-2 border-brand-charcoal rounded-xl p-8 shadow-[8px_8px_0px_0px_rgba(45,52,70,1)] hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none active:translate-x-[4px] active:translate-y-[4px] active:shadow-none transition-all"
           >
-            <div class={`border-2 border-brand-charcoal mb-6 flex h-16 w-16 items-center justify-center rounded-2xl text-2xl ${featureColours[index % featureColours.length]}`}>
-              ⚡
+            <div class={`feature-icon border-2 border-brand-charcoal mb-6 flex h-16 w-16 items-center justify-center rounded-2xl text-brand-charcoal shadow-[4px_4px_0px_0px_rgba(45,52,70,1)] group-hover:shadow-none group-hover:translate-x-[2px] group-hover:translate-y-[2px] group-active:shadow-none group-active:translate-x-[2px] group-active:translate-y-[2px] transition-all ${featureColours[index % featureColours.length]}`}>
+              <Icon name={iconMap[feature.icon] || 'heroicons:bolt'} class="h-8 w-8" />
             </div>
             
             <h3 class="text-brand-charcoal mb-3 text-xl font-black uppercase tracking-tight italic">
@@ -53,3 +67,10 @@ const featureColours = [
     </div>
   </div>
 </section>
+
+<style>
+  /* Standard fix for potential shadow overflow on mobile */
+  #features {
+    overflow-x: hidden;
+  }
+</style>
