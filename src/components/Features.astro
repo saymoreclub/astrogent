@@ -16,45 +16,47 @@ const iconMap = {
   'credit-card': 'heroicons:credit-card',
 };
 
-// Six distinct pastel backgrounds for the six feature cards
 const featureColours = [
-  'bg-brand-lavender', // Card 1: Lavender
-  'bg-[#fef9c3]',      // Card 2: Pastel Lemon
-  'bg-[#e0f2fe]',      // Card 3: Pastel Sky Blue
-  'bg-[#ffedd5]',      // Card 4: Pastel Orange/Peach
-  'bg-[#fce7f3]',      // Card 5: Pastel Pink/Rose
-  'bg-[#dcfce7]',      // Card 6: Pastel Mint
+  'bg-brand-lavender',
+  'bg-[#fef9c3]',
+  'bg-[#e0f2fe]',
+  'bg-[#ffedd5]',
+  'bg-[#fce7f3]',
+  'bg-[#dcfce7]',
 ];
 ---
 
 <section 
   id="features" 
-  class="relative px-4 py-24 sm:px-6 lg:px-8 border-b-2 border-brand-charcoal overflow-hidden bg-[#fdfcff]"
+  class="relative px-4 py-20 sm:px-6 lg:px-8 lg:py-24 border-b-2 border-brand-charcoal overflow-hidden bg-[#fdfcff]"
   style="background-image: linear-gradient(90deg, #eef0f7 2px, transparent 2px); background-size: 40px 100%;"
 >
-  <div class="absolute top-0 left-0 h-16 w-16 border-t-[6px] border-l-[6px] border-brand-charcoal"></div>
-  <div class="absolute top-0 right-0 h-16 w-16 border-t-[6px] border-r-[6px] border-brand-charcoal"></div>
+  <div class="hidden sm:block absolute top-0 left-0 h-16 w-16 border-t-[6px] border-l-[6px] border-brand-charcoal"></div>
+  <div class="hidden sm:block absolute top-0 right-0 h-16 w-16 border-t-[6px] border-r-[6px] border-brand-charcoal"></div>
 
   <div class="mx-auto max-w-7xl relative z-10">
-    <div class="scroll-fade-up mx-auto mb-20 max-w-3xl text-center">
-      <h2 class="text-brand-charcoal mb-6 text-4xl font-extrabold sm:text-5xl tracking-tight uppercase italic">
+    <div class="scroll-fade-up mx-auto mb-16 lg:mb-20 max-w-3xl text-center">
+      <h2 class="text-brand-charcoal mb-6 text-4xl font-extrabold sm:text-5xl tracking-tight uppercase italic px-2">
         <span class="relative inline-block">
           <span class="relative z-10 px-1">{siteConfig.features.title}</span>
           <span class="absolute bottom-1 left-0 h-4 w-full bg-brand-mint/80 z-0"></span>
         </span>
       </h2>
-      <p class="text-brand-charcoal/70 text-xl font-bold">
+      <p class="text-brand-charcoal/70 text-lg sm:text-xl font-bold px-4">
         {siteConfig.features.subtitle}
       </p>
     </div>
 
-    <div class="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 px-2 pb-4">
       {
         featuresContent.map((feature, index) => (
           <div
-            class={`group bg-white border-2 border-brand-charcoal rounded-xl p-8 shadow-[8px_8px_0px_0px_rgba(45,52,70,1)] hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all stagger-${(index % 9) + 1}`}
+            class={`group bg-white border-2 border-brand-charcoal rounded-xl p-8 shadow-[8px_8px_0px_0px_rgba(45,52,70,1)] 
+            hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none 
+            active:translate-x-[4px] active:translate-y-[4px] active:shadow-none
+            transition-all stagger-${(index % 9) + 1} cursor-default`}
           >
-            <div class={`feature-icon border-2 border-brand-charcoal mb-6 flex h-16 w-16 items-center justify-center rounded-2xl text-brand-charcoal shadow-[4px_4px_0px_0px_rgba(45,52,70,1)] group-hover:shadow-none group-hover:translate-x-[2px] group-hover:translate-y-[2px] transition-all ${featureColours[index]}`}>
+            <div class={`feature-icon border-2 border-brand-charcoal mb-6 flex h-16 w-16 items-center justify-center rounded-2xl text-brand-charcoal shadow-[4px_4px_0px_0px_rgba(45,52,70,1)] group-hover:shadow-none group-hover:translate-x-[2px] group-hover:translate-y-[2px] group-active:shadow-none group-active:translate-x-[2px] group-active:translate-y-[2px] transition-all ${featureColours[index % featureColours.length]}`}>
               <Icon name={iconMap[feature.icon] || 'heroicons:bolt'} class="h-8 w-8" />
             </div>
             
