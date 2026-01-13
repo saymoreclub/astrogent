@@ -44,39 +44,45 @@ const featureColours = [
       </p>
     </div>
 
-    <div 
-      class="flex overflow-x-auto snap-x snap-mandatory no-scrollbar -mx-4 px-4 pb-12 
-             md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-10 md:px-2 md:mx-0 md:overflow-visible"
-    >
-      {
-        featuresContent.map((feature, index) => (
-          <div
-            class="flex-none w-[85%] mr-6 snap-center 
-                   md:w-auto md:mr-0 
-                   group bg-white border-2 border-brand-charcoal rounded-xl p-8 shadow-[8px_8px_0px_0px_rgba(45,52,70,1)] 
-                   hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none 
-                   active:translate-x-[4px] active:translate-y-[4px] active:shadow-none transition-all"
-          >
-            <div class={`feature-icon border-2 border-brand-charcoal mb-6 flex h-14 w-14 items-center justify-center rounded-2xl text-brand-charcoal shadow-[4px_4px_0px_0px_rgba(45,52,70,1)] group-hover:shadow-none group-hover:translate-x-[2px] group-hover:translate-y-[2px] transition-all ${featureColours[index % featureColours.length]}`}>
-              <Icon name={iconMap[feature.icon] || 'heroicons:bolt'} class="h-7 w-7" />
+    <div class="relative">
+      <div 
+        id="features-track"
+        class="flex overflow-x-auto snap-x snap-mandatory no-scrollbar -mx-4 px-4 pb-8 
+               md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-10 md:px-2 md:mx-0 md:overflow-visible"
+      >
+        {
+          featuresContent.map((feature, index) => (
+            <div
+              class="flex-none w-[85%] mr-6 snap-center 
+                     md:w-auto md:mr-0 
+                     group bg-white border-2 border-brand-charcoal p-8 rounded-xl shadow-[8px_8px_0px_0px_rgba(45,52,70,1)] 
+                     hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none 
+                     active:translate-x-[4px] active:translate-y-[4px] active:shadow-none transition-all"
+            >
+              <div class={`feature-icon border-2 border-brand-charcoal mb-6 flex h-14 w-14 items-center justify-center rounded-2xl text-brand-charcoal shadow-[4px_4px_0px_0px_rgba(45,52,70,1)] group-hover:shadow-none group-hover:translate-x-[2px] group-hover:translate-y-[2px] transition-all ${featureColours[index % featureColours.length]}`}>
+                <Icon name={iconMap[feature.icon] || 'heroicons:bolt'} class="h-7 w-7" />
+              </div>
+              
+              <h3 class="text-brand-charcoal mb-3 text-xl font-black uppercase tracking-tight italic">
+                {feature.title}
+              </h3>
+              
+              <p class="text-brand-charcoal/80 leading-relaxed font-medium text-sm sm:text-base">
+                {feature.description}
+              </p>
             </div>
-            
-            <h3 class="text-brand-charcoal mb-3 text-xl font-black uppercase tracking-tight italic">
-              {feature.title}
-            </h3>
-            
-            <p class="text-brand-charcoal/80 leading-relaxed font-medium text-sm sm:text-base">
-              {feature.description}
-            </p>
-          </div>
-        ))
-      }
-    </div>
+          ))
+        }
+      </div>
 
-    <div class="flex justify-center gap-2 mt-2 md:hidden">
-       {featuresContent.map((_, i) => (
-         <div class="h-1.5 w-1.5 rounded-full bg-brand-charcoal/20"></div>
-       ))}
+      <div class="flex justify-center gap-2 mt-4 md:hidden">
+        {featuresContent.map((_, i) => (
+          <div 
+            class="h-2 w-2 rounded-full bg-brand-charcoal/20 transition-colors duration-300" 
+            data-feature-dot={i}
+          ></div>
+        ))}
+      </div>
     </div>
   </div>
 </section>
@@ -84,4 +90,41 @@ const featureColours = [
 <style>
   .no-scrollbar::-webkit-scrollbar { display: none; }
   .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  
+  /* Simplified Active State to match Hero */
+  .feature-dot-active { 
+    background-color: #2d3446 !important; 
+  }
 </style>
+
+<script>
+  function initFeatureDots() {
+    const track = document.getElementById('features-track');
+    const dots = document.querySelectorAll('[data-feature-dot]');
+    
+    if (!track || dots.length === 0) return;
+
+    const updateDots = () => {
+      const scrollPos = track.scrollLeft;
+      const firstCard = track.querySelector('div');
+      if (!firstCard) return;
+
+      const itemWidth = firstCard.offsetWidth + 24; // width + gap
+      const activeIndex = Math.round(scrollPos / itemWidth);
+
+      dots.forEach((dot, i) => {
+        if (i === activeIndex) {
+          dot.classList.add('feature-dot-active');
+        } else {
+          dot.classList.remove('feature-dot-active');
+        }
+      });
+    };
+
+    track.addEventListener('scroll', updateDots);
+    updateDots(); 
+  }
+
+  document.addEventListener('DOMContentLoaded', initFeatureDots);
+  document.addEventListener('astro:after-swap', initFeatureDots);
+</script>
