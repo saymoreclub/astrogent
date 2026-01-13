@@ -1,8 +1,9 @@
 ---
 import { siteConfig } from '../config.ts';
 
-// We duplicate the stats to create the illusion of an infinite loop on mobile
-const mobileStats = [...siteConfig.hero.stats, ...siteConfig.hero.stats];
+// Triple the stats to ensure there is always content to the left and right for a seamless loop
+const tripleStats = [...siteConfig.hero.stats, ...siteConfig.hero.stats, ...siteConfig.hero.stats];
+const originalLength = siteConfig.hero.stats.length;
 ---
 
 <section
@@ -26,18 +27,19 @@ const mobileStats = [...siteConfig.hero.stats, ...siteConfig.hero.stats];
       <div class="relative w-full overflow-hidden md:overflow-visible">
         <div 
           id="hero-stats-track"
-          class="flex md:grid md:grid-cols-3 gap-6 overflow-x-auto snap-x snap-mandatory no-scrollbar pb-8 px-4 -mx-4 md:px-0 md:mx-0"
+          class="flex md:grid md:grid-cols-3 gap-4 overflow-x-auto snap-x snap-mandatory no-scrollbar pb-8 px-4 -mx-4 md:px-0 md:mx-0"
         >
           {
-            mobileStats.map((stat, index) => (
+            tripleStats.map((stat, index) => (
               <div 
-                class={`flex-none w-[85%] md:w-auto snap-center bg-brand-lavender border-2 border-brand-charcoal p-8 rounded-xl shadow-[6px_6px_0px_0px_rgba(45,52,70,1)] 
-                ${index >= siteConfig.hero.stats.length ? 'md:hidden' : ''}`}
+                class={`flex-none w-[70%] md:w-auto snap-center bg-brand-lavender border-2 border-brand-charcoal p-8 rounded-xl shadow-[6px_6px_0px_0px_rgba(45,52,70,1)] 
+                ${index >= originalLength ? 'md:hidden' : ''}`}
+                data-index={index % originalLength}
               >
                 <div class="text-brand-charcoal mb-2 text-4xl font-black italic">
                   {stat.value}
                 </div>
-                <div class="text-brand-charcoal/70 text-sm tracking-widest uppercase font-black">
+                <div class="text-brand-charcoal/70 text-[10px] tracking-widest uppercase font-black">
                   {stat.label}
                 </div>
               </div>
@@ -52,47 +54,46 @@ const mobileStats = [...siteConfig.hero.stats, ...siteConfig.hero.stats];
 <style>
   .no-scrollbar::-webkit-scrollbar { display: none; }
   .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-  
-  /* Smooth scrolling only when JS triggers it */
-  #hero-stats-track {
-    scroll-behavior: smooth;
-  }
 </style>
 
-<script>
+<script define:vars={{ originalLength }}>
   function initInfiniteSlider() {
     const track = document.getElementById('hero-stats-track');
     if (!track || window.innerWidth >= 768) return;
 
-    const originalCount = 3; // Number of unique stats
-    let currentIndex = 0;
+    const cards = track.children;
+    const cardWidth = cards[0].offsetWidth + 16; // Width + 1rem gap (16px)
     
-    function slide() {
-      currentIndex++;
-      const cards = track.children;
-      const cardWidth = cards[0].offsetWidth + 24; // Width + gap
+    // Start the scroll in the middle set of cards so user can scroll left or right
+    track.scrollLeft = cardWidth * originalLength;
 
-      track.scrollTo({
-        left: currentIndex * cardWidth,
-        behavior: 'smooth'
-      });
+    function handleInfiniteScroll() {
+      const scrollPos = track.scrollLeft;
+      const totalWidth = cardWidth * originalLength;
 
-      // Infinite Loop Logic: If we reach the start of the duplicate set, 
-      // wait for the animation to finish then snap back to the start
-      if (currentIndex >= originalCount) {
-        setTimeout(() => {
-          track.style.scrollBehavior = 'auto';
-          track.scrollLeft = 0;
-          currentIndex = 0;
-          track.style.scrollBehavior = 'smooth';
-        }, 600); // Matches the smooth scroll duration
+      // If they scroll too far right, snap back to middle
+      if (scrollPos >= totalWidth * 2) {
+        track.scrollLeft = scrollPos - totalWidth;
+      }
+      // If they scroll too far left, snap to middle
+      if (scrollPos <= 0) {
+        track.scrollLeft = scrollPos + totalWidth;
       }
     }
 
-    // Set to 2 seconds for a "quite quick" feel
-    let sliderInterval = setInterval(slide, 2000);
+    function autoSlide() {
+      track.scrollTo({
+        left: track.scrollLeft + cardWidth,
+        behavior: 'smooth'
+      });
+    }
 
-    // Stop on user interaction
+    track.addEventListener('scroll', handleInfiniteScroll);
+    
+    // Quite quick: 2 second interval
+    let sliderInterval = setInterval(autoSlide, 2000);
+
+    // Pause on interaction
     track.addEventListener('touchstart', () => clearInterval(sliderInterval), { passive: true });
   }
 
