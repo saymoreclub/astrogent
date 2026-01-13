@@ -36,45 +36,59 @@ import Footer from '../components/Footer.astro';
     />
   </head>
 
-  <body class="text-brand-charcoal bg-[#f9f7f2] font-sans antialiased">
+  <body class="text-brand-charcoal bg-[#f9f7f2] font-sans antialiased overflow-x-hidden">
     <SubNavigation />
     
-    <main class="pt-40 pb-24 px-4">
+    <main class="pt-32 md:pt-40 pb-24 px-6 md:px-4">
       <div class="mx-auto max-w-4xl">
-        <h1 class="text-6xl font-black uppercase italic tracking-tighter mb-12">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-black uppercase italic tracking-tighter mb-12 break-words">
           Terms of Service
         </h1>
         
-        <div class="space-y-12 uppercase text-[11px] tracking-widest leading-relaxed opacity-90">
-          <section class="border-l-4 border-brand-mint pl-8">
-            <h2 class="text-2xl font-black mb-6 italic">01. Public Offer Agreement</h2>
-            <p>Accessing Lernit.io constitutes a binding legal agreement. This document serves as a **Public Offer (Public Agreement)** under Articles 633 and 641 of the Civil Code of Ukraine. By utilising our platforms, you accept the terms provided by **Jones Group LLC** without reservation.</p>
+        <div class="space-y-12 uppercase text-[10px] sm:text-[11px] tracking-widest leading-relaxed opacity-90">
+          
+          <section class="border-l-4 border-brand-mint pl-5 md:pl-8">
+            <h2 class="text-xl md:text-2xl font-black mb-4 md:mb-6 italic">01. Public Offer Agreement</h2>
+            <p>
+              Accessing Lernit.io constitutes a binding legal agreement. This document serves as a **Public Offer (Public Agreement)** under Articles 633 and 641 of the Civil Code of Ukraine. By utilising our platforms, you accept the terms provided by **Jones Group LLC** without reservation.
+            </p>
           </section>
 
-          <section class="border-l-4 border-brand-mint pl-8">
-            <h2 class="text-2xl font-black mb-6 italic">02. Intellectual Property & Code Protection</h2>
-            <p>All software architecture, visual assets, proprietary logic, and bespoke elements are the sole property of **Jones Group LLC**. You are granted a revocable, non-exclusive licence to use the platform. Any attempt to reverse-engineer, scrape, or redistribute our code is a criminal violation of the Law of Ukraine "On Copyright and Related Rights."</p>
+          <section class="border-l-4 border-brand-mint pl-5 md:pl-8">
+            <h2 class="text-xl md:text-2xl font-black mb-4 md:mb-6 italic">02. Intellectual Property</h2>
+            <p>
+              All software architecture, visual assets, proprietary logic, and bespoke elements are the sole property of **Jones Group LLC**. Any attempt to reverse-engineer, scrape, or redistribute our code is a criminal violation of the Law of Ukraine "On Copyright and Related Rights."
+            </p>
           </section>
 
-          <section class="border-l-4 border-brand-mint pl-8">
-            <h2 class="text-2xl font-black mb-6 italic">03. Force Majeure & Continuity</h2>
-            <p>Jones Group LLC operates in a region currently subject to martial law. While we maintain high uptime targets, we are not liable for service interruptions caused by catastrophic infrastructure failure, kinetic military action, or state-level cyber-interruption. We provide no warranties regarding the platform's suitability for specific pedagogical outcomes.</p>
+          <section class="border-l-4 border-brand-mint pl-5 md:pl-8">
+            <h2 class="text-xl md:text-2xl font-black mb-4 md:mb-6 italic">03. Force Majeure & Continuity</h2>
+            <p>
+              Jones Group LLC operates in a region currently subject to martial law. While we maintain high uptime targets, we are not liable for service interruptions caused by catastrophic infrastructure failure, kinetic military action, or state-level cyber-interruption.
+            </p>
           </section>
 
-          <section class="border-l-4 border-brand-mint pl-6">
-            <h2 class="text-2xl font-black mb-6 italic">04. Commercial Conduct</h2>
-            <p>Users must use Lernit.io for lawful educational purposes. We reserve the right to terminate access immediately, without refund, if the platform is used to host illegal content or facilitate fraud. Payments processed by Jones Group LLC are final and subject to Ukrainian commercial law.</p>
+          <section class="border-l-4 border-brand-mint pl-5 md:pl-8">
+            <h2 class="text-xl md:text-2xl font-black mb-4 md:mb-6 italic">04. Commercial Conduct</h2>
+            <p>
+              Users must use Lernit.io for lawful educational purposes. We reserve the right to terminate access immediately, without refund, if the platform is used to host illegal content or facilitate fraud. Payments processed by Jones Group LLC are final and subject to Ukrainian commercial law.
+            </p>
           </section>
 
-          <section class="border-l-4 border-brand-mint pl-8">
-            <h2 class="text-2xl font-black mb-6 italic">05. Jurisdiction & Disputes</h2>
-            <p>These terms are governed by the laws of Ukraine. In the event of a dispute that cannot be resolved via mutual negotiation, the matter shall be settled exclusively within the Commercial Courts of Ukraine.</p>
+          <section class="border-l-4 border-brand-mint pl-5 md:pl-8">
+            <h2 class="text-xl md:text-2xl font-black mb-4 md:mb-6 italic">05. Jurisdiction & Disputes</h2>
+            <p>
+              These terms are governed by the laws of Ukraine. In the event of a dispute that cannot be resolved via mutual negotiation, the matter shall be settled exclusively within the Commercial Courts of Ukraine.
+            </p>
           </section>
 
-          <section class="border-l-4 border-brand-mint pl-8">
-            <h2 class="text-2xl font-black mb-6 italic">06. Revisions</h2>
-            <p>Jones Group LLC reserves the right to modify these terms at any time. Continued use of the platform following such changes constitutes acceptance of the revised legal framework.</p>
+          <section class="border-l-4 border-brand-mint pl-5 md:pl-8">
+            <h2 class="text-xl md:text-2xl font-black mb-4 md:mb-6 italic">06. Revisions</h2>
+            <p>
+              Jones Group LLC reserves the right to modify these terms at any time. Continued use of the platform following such changes constitutes acceptance of the revised legal framework.
+            </p>
           </section>
+
         </div>
       </div>
     </main>

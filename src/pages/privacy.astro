@@ -11,84 +11,40 @@ import Footer from '../components/Footer.astro';
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-
     <title>Privacy Policy | {siteConfig.site.title}</title>
-    <meta name="description" content={siteConfig.site.description} />
-    <meta name="keywords" content={siteConfig.site.keywords} />
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet" />
+    </head>
 
-    <meta property="og:title" content={`Privacy Policy | ${siteConfig.site.ogTitle}`} />
-    <meta property="og:description" content={siteConfig.site.ogDescription} />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="/screenshot.jpeg" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-
-    <meta name="twitter:card" content={siteConfig.site.twitterCard} />
-    <meta name="twitter:title" content={`Privacy Policy | ${siteConfig.site.twitterTitle}`} />
-    <meta name="twitter:description" content={siteConfig.site.twitterDescription} />
-    <meta name="twitter:image" content="/og-image.png" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-
-  <body class="text-brand-charcoal bg-[#f9f7f2] font-sans antialiased">
+  <body class="text-brand-charcoal bg-[#f9f7f2] font-sans antialiased overflow-x-hidden">
     <SubNavigation />
     
-    <main class="pt-40 pb-24 px-4">
+    <main class="pt-32 md:pt-40 pb-24 px-6 md:px-4">
       <div class="mx-auto max-w-4xl">
-        <h1 class="text-6xl font-black uppercase italic tracking-tighter mb-12">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-black uppercase italic tracking-tighter mb-12 break-words">
           Privacy Policy
         </h1>
         
-        <div class="space-y-12 uppercase text-[11px] tracking-widest leading-relaxed opacity-90">
+        <div class="space-y-12 uppercase text-[10px] sm:text-[11px] tracking-widest leading-relaxed opacity-90">
           
-          <section class="border-l-4 border-brand-mint pl-8">
-            <h2 class="text-2xl font-black mb-6 italic">01. Data Controller</h2>
-            <p class="mb-4">
-              Lernit.io is a digital service operated by **Jones Group LLC**, a Limited Liability Company registered in Ukraine. Jones Group LLC is the primary data controller responsible for your personal information under the Law of Ukraine "On Personal Data Protection" (No. 2297-VI) and international data standards.
+          <section class="border-l-4 border-brand-mint pl-5 md:pl-8">
+            <h2 class="text-xl md:text-2xl font-black mb-4 md:mb-6 italic">01. Data Controller</h2>
+            <p>
+              Lernit.io is a digital service operated by **Jones Group LLC**, a Limited Liability Company registered in Ukraine. Jones Group LLC is the primary data controller responsible for your personal information under the Law of Ukraine "On Personal Data Protection" (No. 2297-VI).
             </p>
           </section>
 
-          <section class="border-l-4 border-brand-mint pl-8">
-            <h2 class="text-2xl font-black mb-6 italic">02. Information Collection</h2>
-            <p class="mb-4">
-              We process information that is essential for the technical operation of your bespoke learning environment. This includes:
-            </p>
+          <section class="border-l-4 border-brand-mint pl-5 md:pl-8">
+            <h2 class="text-xl md:text-2xl font-black mb-4 md:mb-6 italic">02. Information Collection</h2>
+            <p class="mb-4">We process information essential for platform security and operation:</p>
             <ul class="list-none space-y-2">
-              <li>— Identity Data (Names and professional credentials)</li>
-              <li>— Contact Data (Email and billing identifiers)</li>
-              <li>— Technical Data (IP metadata and browser fingerprints for security)</li>
-              <li>— Usage Data (Platform interaction logs)</li>
+              <li>— Identity Data (Credentials)</li>
+              <li>— Contact Data (Email/Billing)</li>
+              <li>— Technical Data (IP/Metadata)</li>
+              <li>— Usage Data (Access Logs)</li>
             </ul>
           </section>
 
-          <section class="border-l-4 border-brand-mint pl-8">
-            <h2 class="text-2xl font-black mb-6 italic">03. Legal Grounds for Processing</h2>
-            <p>
-              Under Ukrainian legislation, we process your data based on: **Contractual Performance** (delivering the service purchased), **Explicit Consent** (granted during registration), and **Legal Compliance** (tax and statutory reporting in Ukraine).
-            </p>
-          </section>
-
-          <section class="border-l-4 border-brand-mint pl-8">
-            <h2 class="text-2xl font-black mb-6 italic">04. Data Sovereignty</h2>
-            <p>
-              Your data is stored on secure, encrypted infrastructure. Jones Group LLC does not engage in the sale or trade of personal data to third-party marketing brokers. Data sharing is limited to essential service providers (e.g., Stripe for payments) under strict confidentiality terms.
-            </p>
-          </section>
-
-          <section class="border-l-4 border-brand-mint pl-8">
-            <h2 class="text-2xl font-black mb-6 italic">05. Your Rights</h2>
-            <p>
-              In accordance with Article 8 of the Law of Ukraine "On Personal Data Protection," you have the right to know about the location of your data, the purpose of its processing, and to demand rectification or deletion. To exercise these rights, contact the Jones Group LLC legal department.
-            </p>
-          </section>
-
-        </div>
+          </div>
       </div>
     </main>
 
