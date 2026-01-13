@@ -4,14 +4,14 @@ import { siteConfig } from '../config.ts';
 
 <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b-4 border-brand-charcoal px-4 py-4">
   <div class="mx-auto max-w-5xl flex items-center justify-between">
-    <a href="/" class="transition-transform hover:scale-95">
+    <a href="/" class="transition-transform hover:scale-95 active:scale-90">
       <img src="/logo.svg" alt={siteConfig.site.name} class="h-10 w-auto" />
     </a>
 
-    <div class="flex items-center gap-6">
+    <div class="flex items-center">
       <a 
         href="/" 
-        class="text-sm font-black uppercase italic tracking-tighter border-2 border-brand-charcoal px-4 py-1 hover:bg-brand-charcoal hover:text-white transition-all"
+        class="text-xs font-black uppercase tracking-tighter bg-brand-mint text-brand-charcoal border-2 border-brand-charcoal px-6 py-2 hover:bg-brand-charcoal hover:text-white transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px]"
       >
         Back to Home
       </a>
