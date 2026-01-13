@@ -1,5 +1,8 @@
 ---
 import { siteConfig } from '../config.ts';
+
+// Duplicate stats to ensure a seamless loop
+const allStats = [...siteConfig.hero.stats, ...siteConfig.hero.stats];
 ---
 
 <section
@@ -11,9 +14,7 @@ import { siteConfig } from '../config.ts';
 
   <div class="mx-auto max-w-7xl relative z-10">
     <div class="mx-auto max-w-4xl text-center">
-      <h1
-        class="text-brand-charcoal scroll-fade-up mb-6 text-5xl leading-tight font-extrabold sm:text-6xl lg:text-7xl tracking-tight"
-      >
+      <h1 class="text-brand-charcoal scroll-fade-up mb-6 text-5xl leading-tight font-extrabold sm:text-6xl lg:text-7xl tracking-tight">
         {siteConfig.hero.headline}<br />
         <span class="relative inline-block mt-2">
           <span class="relative z-10 px-2">{siteConfig.hero.subheadline}</span>
@@ -21,39 +22,25 @@ import { siteConfig } from '../config.ts';
         </span>
       </h1>
       
-      <p
-        class="text-brand-charcoal/80 scroll-fade-up mb-10 text-xl leading-relaxed sm:text-2xl px-2 md:px-0"
-      >
+      <p class="text-brand-charcoal/80 scroll-fade-up mb-10 text-xl leading-relaxed sm:text-2xl px-2 md:px-0">
         {siteConfig.hero.description}
       </p>
       
-      <div
-        class="scroll-fade-up mb-16 flex flex-col justify-center gap-4 sm:flex-row px-4 sm:px-0"
-      >
-        <a
-          href={siteConfig.hero.cta.primary.href}
-          class="bg-brand-mint border-2 border-brand-charcoal rounded-lg px-8 py-4 font-bold text-brand-charcoal shadow-[4px_4px_0px_0px_rgba(45,52,70,1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all text-center"
-        >
+      <div class="scroll-fade-up mb-16 flex flex-col justify-center gap-4 sm:flex-row px-4 sm:px-0">
+        <a href={siteConfig.hero.cta.primary.href} class="bg-brand-mint border-2 border-brand-charcoal rounded-lg px-8 py-4 font-bold text-brand-charcoal shadow-[4px_4px_0px_0px_rgba(45,52,70,1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all text-center">
           {siteConfig.hero.cta.primary.text}
         </a>
-        <a
-          href={siteConfig.hero.cta.secondary.href}
-          class="border-brand-charcoal text-brand-charcoal rounded-lg border-2 bg-white px-8 py-4 font-bold shadow-[4px_4px_0px_0px_rgba(45,52,70,1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all text-center"
-        >
+        <a href={siteConfig.hero.cta.secondary.href} class="border-brand-charcoal text-brand-charcoal rounded-lg border-2 bg-white px-8 py-4 font-bold shadow-[4px_4px_0px_0px_rgba(45,52,70,1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all text-center">
           {siteConfig.hero.cta.secondary.text}
         </a>
       </div>
 
-      <div class="relative w-full overflow-visible">
-        <div
-          class="flex md:grid md:grid-cols-3 gap-6 overflow-x-auto md:overflow-visible pb-8 snap-x snap-mandatory no-scrollbar px-4 -mx-4 md:px-0 md:mx-0"
-        >
+      <div class="relative w-full overflow-hidden md:overflow-visible">
+        <div class="flex md:grid md:grid-cols-3 gap-6 animate-scroll md:animate-none">
           {
-            siteConfig.hero.stats.map((stat, index) => (
-              <div 
-                class={`scroll-fade-up stagger-${index + 1} flex-none w-[85%] md:w-auto snap-center bg-brand-lavender border-2 border-brand-charcoal p-8 rounded-xl shadow-[6px_6px_0px_0px_rgba(45,52,70,1)]`}
-              >
-                <div class="text-brand-charcoal mb-2 text-4xl font-black">
+            allStats.map((stat) => (
+              <div class="flex-none w-[75%] md:w-auto bg-brand-lavender border-2 border-brand-charcoal p-8 rounded-xl shadow-[6px_6px_0px_0px_rgba(45,52,70,1)]">
+                <div class="text-brand-charcoal mb-2 text-4xl font-black italic">
                   {stat.value}
                 </div>
                 <div class="text-brand-charcoal/70 text-sm tracking-widest uppercase font-black">
@@ -69,12 +56,30 @@ import { siteConfig } from '../config.ts';
 </section>
 
 <style>
-  /* Hide scrollbar but keep functionality */
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
+  @keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-100% - 1.5rem)); } /* Adjust for gap */
   }
-  .no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+
+  /* Only apply animation on mobile */
+  @media (max-width: 767px) {
+    .animate-scroll {
+      display: flex;
+      width: max-content;
+      animation: scroll 20s linear infinite;
+    }
+    
+    /* Pause on touch so users can read */
+    .animate-scroll:active {
+      animation-play-state: paused;
+    }
+  }
+
+  /* Ensure desktop is clean */
+  @media (min-width: 768px) {
+    .animate-scroll {
+      animation: none;
+      width: 100%;
+    }
   }
 </style>
