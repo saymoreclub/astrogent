@@ -8,9 +8,7 @@ import { siteConfig } from '../config.ts';
 >
   <div class="mx-auto max-w-7xl relative z-10">
     <div class="mx-auto max-w-4xl text-center">
-      <h1
-        class="text-brand-charcoal mb-6 text-5xl leading-tight font-extrabold sm:text-6xl lg:text-7xl"
-      >
+      <h1 class="text-brand-charcoal mb-6 text-5xl leading-tight font-extrabold sm:text-6xl lg:text-7xl">
         {siteConfig.hero.headline}<br />
         <span class="relative inline-block mt-2">
           <span class="relative z-10 px-2">{siteConfig.hero.subheadline}</span>
@@ -18,40 +16,32 @@ import { siteConfig } from '../config.ts';
         </span>
       </h1>
       
-      <p
-        class="text-brand-charcoal/80 mb-10 text-xl leading-relaxed sm:text-2xl"
-      >
+      <p class="text-brand-charcoal/80 mb-10 text-xl leading-relaxed sm:text-2xl">
         {siteConfig.hero.description}
       </p>
       
-      <div
-        class="mb-16 flex flex-col justify-center gap-4 sm:flex-row px-4 sm:px-0"
-      >
-        <a
-          href={siteConfig.hero.cta.primary.href}
-          class="bg-brand-mint border-2 border-brand-charcoal rounded-lg px-8 py-4 font-semibold text-brand-charcoal shadow-[4px_4px_0px_0px_rgba(45,52,70,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all text-center"
-        >
+      <div class="mb-16 flex flex-col justify-center gap-4 sm:flex-row px-4 sm:px-0">
+        <a href={siteConfig.hero.cta.primary.href} class="bg-brand-mint border-2 border-brand-charcoal rounded-lg px-8 py-4 font-semibold text-brand-charcoal shadow-[4px_4px_0px_0px_rgba(45,52,70,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all text-center">
           {siteConfig.hero.cta.primary.text}
         </a>
-        <a
-          href={siteConfig.hero.cta.secondary.href}
-          class="border-brand-charcoal text-brand-charcoal rounded-lg border-2 bg-white px-8 py-4 font-semibold shadow-[4px_4px_0px_0px_rgba(45,52,70,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all text-center"
-        >
+        <a href={siteConfig.hero.cta.secondary.href} class="border-brand-charcoal text-brand-charcoal rounded-lg border-2 bg-white px-8 py-4 font-semibold shadow-[4px_4px_0px_0px_rgba(45,52,70,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all text-center">
           {siteConfig.hero.cta.secondary.text}
         </a>
       </div>
 
-      <div class="relative w-full overflow-hidden md:overflow-visible md:px-4">
+      <div class="relative w-full overflow-hidden md:overflow-visible">
         <div 
           id="hero-stats-track"
-          class="flex md:grid md:grid-cols-3 gap-6 overflow-x-auto snap-x snap-mandatory no-scrollbar pb-12 px-4 -mx-4 md:px-2 md:mx-0 md:overflow-visible"
+          class="flex overflow-x-auto snap-x snap-mandatory no-scrollbar -mx-4 px-4 pb-8
+                 md:grid md:grid-cols-3 md:gap-6 md:px-2 md:mx-0 md:overflow-visible"
         >
           {
             siteConfig.hero.stats.map((stat) => (
               <div 
-                class="flex-none w-[70%] md:w-auto snap-center bg-brand-lavender border-2 border-brand-charcoal p-8 rounded-xl shadow-[6px_6px_0px_0px_rgba(45,52,70,1)] hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none active:translate-x-[3px] active:translate-y-[3px] active:shadow-none transition-all cursor-default"
+                class="flex-none w-[80%] mr-4 snap-center bg-brand-lavender border-2 border-brand-charcoal p-8 rounded-xl shadow-[6px_6px_0px_0px_rgba(45,52,70,1)] 
+                       md:w-auto md:mr-0 hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none active:translate-x-[3px] active:translate-y-[3px] active:shadow-none transition-all cursor-default"
               >
-                <div class="text-brand-charcoal mb-2 text-4xl font-bold">
+                <div class="text-brand-charcoal mb-2 text-4xl font-bold italic">
                   {stat.value}
                 </div>
                 <div class="text-brand-charcoal/70 text-sm tracking-wide uppercase font-bold">
@@ -61,7 +51,52 @@ import { siteConfig } from '../config.ts';
             ))
           }
         </div>
+
+        <div class="flex justify-center gap-2 mt-2 md:hidden">
+          {siteConfig.hero.stats.map((_, i) => (
+            <div 
+              class="h-2 w-2 rounded-full bg-brand-charcoal/20 transition-colors duration-300" 
+              data-hero-dot={i}
+            ></div>
+          ))}
+        </div>
       </div>
     </div>
   </div>
 </section>
+
+<style>
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  .dot-active { background-color: #2d3446 !important; width: 1rem !important; border-radius: 4px; }
+</style>
+
+<script>
+  function initHeroDots() {
+    const track = document.getElementById('hero-stats-track');
+    const dots = document.querySelectorAll('[data-hero-dot]');
+    
+    if (!track || dots.length === 0) return;
+
+    const updateDots = () => {
+      const scrollPos = track.scrollLeft;
+      const width = track.offsetWidth;
+      const activeIndex = Math.round(scrollPos / width);
+
+      dots.forEach((dot, i) => {
+        if (i === activeIndex) {
+          dot.classList.add('dot-active');
+        } else {
+          dot.classList.remove('dot-active');
+        }
+      });
+    };
+
+    track.addEventListener('scroll', updateDots);
+    // Initial call to set first dot
+    updateDots();
+  }
+
+  document.addEventListener('DOMContentLoaded', initHeroDots);
+  document.addEventListener('astro:after-swap', initHeroDots);
+</script>
