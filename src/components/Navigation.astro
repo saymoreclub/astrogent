@@ -7,10 +7,10 @@ import { Icon } from 'astro-icon/components';
   class="fixed top-0 z-50 w-full border-b-4 border-brand-charcoal bg-white/90 backdrop-blur-md"
 >
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="flex h-16 md:h-20 items-center justify-between"> 
+    <div class="flex h-16 items-center justify-between"> 
       <div class="flex items-center">
-        <a href="/" class="transition-transform hover:scale-105 flex items-center shrink-0">
-          <img src="/logo.svg" alt={siteConfig.site.name} class="h-8 md:h-10 w-auto" /> 
+        <a href="/" class="transition-transform hover:scale-105 flex items-center">
+          <img src="/logo.svg" alt={siteConfig.site.name} class="h-9 w-auto" /> 
         </a>
       </div>
 
@@ -38,7 +38,7 @@ import { Icon } from 'astro-icon/components';
 
       <button
         id="mobileMenuButton"
-        class="flex items-center justify-center rounded-lg p-2 md:hidden border-2 border-brand-charcoal bg-brand-mint shadow-[3px_3px_0px_0px_rgba(45,52,70,1)] active:shadow-none active:translate-x-[2px] active:translate-y-[2px] transition-all"
+        class="flex items-center justify-center rounded-lg p-1.5 md:hidden border-2 border-brand-charcoal bg-brand-mint shadow-[2px_2px_0px_0px_rgba(45,52,70,1)] active:shadow-none active:translate-x-[1px] active:translate-y-[1px] transition-all"
         aria-controls="mobileMenu"
         aria-expanded="false"
         aria-label="Toggle navigation menu"
@@ -49,28 +49,26 @@ import { Icon } from 'astro-icon/components';
 
     <div 
       id="mobileMenu" 
-      class="hidden border-t-4 border-brand-charcoal pb-8 md:hidden" 
+      class="hidden border-t-2 border-brand-charcoal/10 pb-6 md:hidden" 
       aria-hidden="true"
     >
-      <div class="flex flex-col pt-4">
+      <div class="flex flex-col space-y-4 pt-4">
         {
           siteConfig.navigation.links.map((link) => (
             <a 
               href={link.href} 
-              class="text-lg font-semibold uppercase tracking-tight text-brand-charcoal py-5 border-b-2 border-brand-charcoal/5 active:bg-brand-mint/10 transition-colors"
+              class="text-lg font-semibold uppercase tracking-tight text-brand-charcoal py-2 border-b border-brand-charcoal/5"
             >
               {link.name}
             </a>
           ))
         }
-        <div class="pt-8">
-          <a
-            href={siteConfig.navigation.cta.href}
-            class="block w-full bg-brand-mint border-4 border-brand-charcoal rounded-xl px-6 py-5 text-center text-xl font-bold uppercase tracking-tight text-brand-charcoal shadow-[6px_6px_0px_0px_rgba(45,52,70,1)] active:shadow-none active:translate-x-[4px] active:translate-y-[4px] transition-all"
-          >
-            {siteConfig.navigation.cta.text}
-          </a>
-        </div>
+        <a
+          href={siteConfig.navigation.cta.href}
+          class="bg-brand-mint border-2 border-brand-charcoal rounded-lg px-6 py-4 text-center font-bold uppercase tracking-tight text-brand-charcoal shadow-[4px_4px_0px_0px_rgba(45,52,70,1)] active:shadow-none active:translate-x-[2px] active:translate-y-[2px] transition-all"
+        >
+          {siteConfig.navigation.cta.text}
+        </a>
       </div>
     </div>
   </div>
