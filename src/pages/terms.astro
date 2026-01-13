@@ -6,14 +6,34 @@ import Footer from '../components/Footer.astro';
 ---
 
 <!doctype html>
-<html lang="en-GB">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Terms & Conditions | {siteConfig.site.name}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <title>Terms of Service | {siteConfig.site.title}</title>
+    <meta name="description" content={siteConfig.site.description} />
+    <meta name="keywords" content={siteConfig.site.keywords} />
+
+    <meta property="og:title" content={`Terms of Service | ${siteConfig.site.ogTitle}`} />
+    <meta property="og:description" content={siteConfig.site.ogDescription} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/screenshot.jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <meta name="twitter:card" content={siteConfig.site.twitterCard} />
+    <meta name="twitter:title" content={`Terms of Service | ${siteConfig.site.twitterTitle}`} />
+    <meta name="twitter:description" content={siteConfig.site.twitterDescription} />
+    <meta name="twitter:image" content="/og-image.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet" />
   </head>
-  <body class="text-brand-charcoal bg-[#f2f4f7] font-sans antialiased">
+
+  <body class="text-brand-charcoal bg-[#f9f7f2] font-sans antialiased">
     <Navigation />
     
     <main class="pt-40 pb-24 px-4">
@@ -24,28 +44,18 @@ import Footer from '../components/Footer.astro';
         
         <div class="space-y-10 uppercase text-[11px] tracking-widest leading-relaxed opacity-90">
           <section class="border-l-2 border-brand-mint pl-6">
-            <h2 class="text-xl font-black mb-4 italic">01. Acceptance of Terms</h2>
-            <p>By accessing Lernit.io, you acknowledge that you have read, understood, and agreed to be bound by these terms. If you do not agree to these terms, you must cease use of our platforms immediately. These terms constitute a legally binding agreement between you and Jones Group.</p>
+            <h2 class="text-xl font-black mb-4 italic">01. Public Offer</h2>
+            <p>These Terms of Service constitute a public offer by Jones Group LLC, a registered Ukrainian entity, in accordance with the Civil Code of Ukraine. Use of the platform signifies unconditional acceptance.</p>
           </section>
 
           <section class="border-l-2 border-brand-mint pl-6">
-            <h2 class="text-xl font-black mb-4 italic">02. Platform Usage</h2>
-            <p>Lernit.io provides bespoke learning infrastructure. You are responsible for ensuring that all persons who access the platform through your internet connection or login credentials are aware of these terms and comply with them. We reserve the right to withdraw or amend the service without notice.</p>
+            <h2 class="text-xl font-black mb-4 italic">02. Force Majeure</h2>
+            <p>Jones Group LLC shall not be liable for service interruptions caused by Force Majeure events within the territory of Ukraine, including infrastructure failures or military actions.</p>
           </section>
 
           <section class="border-l-2 border-brand-mint pl-6">
-            <h2 class="text-xl font-black mb-4 italic">03. Intellectual Property Rights</h2>
-            <p>We are the owner or the licensee of all intellectual property rights in our site, and in the material published on it. Those works are protected by copyright laws and treaties around the world. All such rights are reserved. You must not use any part of the content on our site for commercial purposes without obtaining a licence to do so from Jones Group.</p>
-          </section>
-
-          <section class="border-l-2 border-brand-mint pl-6">
-            <h2 class="text-xl font-black mb-4 italic">04. Limitation of Liability</h2>
-            <p>To the extent permitted by law, we exclude all conditions, warranties, representations or other terms which may apply to our site or any content on it, whether express or implied. We will not be liable for any loss or damage, whether in contract, tort (including negligence), breach of statutory duty, or otherwise, arising under or in connection with the use of, or inability to use, our site.</p>
-          </section>
-
-          <section class="border-l-2 border-brand-mint pl-6">
-            <h2 class="text-xl font-black mb-4 italic">05. Governing Law</h2>
-            <p>These terms, their subject matter and their formation, are governed by English law. You and we both agree that the courts of England and Wales will have exclusive jurisdiction.</p>
+            <h2 class="text-xl font-black mb-4 italic">03. Jurisdiction</h2>
+            <p>This agreement is governed by the legislation of Ukraine. Disputes shall be referred to the Commercial Courts of Ukraine for final resolution.</p>
           </section>
         </div>
       </div>
