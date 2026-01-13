@@ -20,7 +20,22 @@ import { siteConfig } from '../config.ts';
         {siteConfig.hero.description}
       </p>
       
-      <div class="relative w-full overflow-hidden md:overflow-visible md:p-4">
+      <div class="mb-16 flex flex-col justify-center gap-4 sm:flex-row px-4 sm:px-0">
+        <a 
+          href={siteConfig.hero.cta.primary.href} 
+          class="bg-brand-mint border-2 border-brand-charcoal rounded-lg px-8 py-4 font-bold text-brand-charcoal shadow-[4px_4px_0px_0px_rgba(45,52,70,1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all text-center uppercase tracking-tight"
+        >
+          {siteConfig.hero.cta.primary.text}
+        </a>
+        <a 
+          href={siteConfig.hero.cta.secondary.href} 
+          class="border-brand-charcoal text-brand-charcoal rounded-lg border-2 bg-white px-8 py-4 font-bold shadow-[4px_4px_0px_0px_rgba(45,52,70,1)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all text-center uppercase tracking-tight"
+        >
+          {siteConfig.hero.cta.secondary.text}
+        </a>
+      </div>
+
+      <div class="relative w-full overflow-hidden md:overflow-visible md:p-6">
         <div 
           id="hero-stats-track"
           class="flex md:grid md:grid-cols-3 gap-6 overflow-x-auto snap-x snap-mandatory no-scrollbar pb-12 px-4 -mx-4 md:px-0 md:mx-0"
@@ -46,7 +61,6 @@ import { siteConfig } from '../config.ts';
 </section>
 
 <style>
-  /* Clean, non-jittery CSS Scroll logic */
   .no-scrollbar::-webkit-scrollbar { display: none; }
   .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
@@ -58,7 +72,6 @@ import { siteConfig } from '../config.ts';
 </style>
 
 <script>
-  // Simple, smooth auto-paging without the "teleporting" jitter
   function initSimpleSlider() {
     const track = document.getElementById('hero-stats-track');
     if (!track || window.innerWidth >= 768) return;
@@ -69,20 +82,17 @@ import { siteConfig } from '../config.ts';
     function autoMove() {
       index++;
       if (index >= cards.length) {
-        index = 0; // Reset to start
+        index = 0;
       }
       
-      const cardWidth = cards[0].offsetWidth + 24; // Width + gap
+      const cardWidth = cards[0].offsetWidth + 24; 
       track.scrollTo({
         left: index * cardWidth,
         behavior: 'smooth'
       });
     }
 
-    // Set to 2.5s for a brisk but readable pace
     let interval = setInterval(autoMove, 2500);
-
-    // Stop if the user touches it to prevent fighting the scroll
     track.addEventListener('touchstart', () => clearInterval(interval), { passive: true });
   }
 
