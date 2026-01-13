@@ -21,25 +21,26 @@ import { siteConfig } from '../config.ts';
       </p>
       
       <div class="mb-16 flex flex-col justify-center gap-4 sm:flex-row px-4 sm:px-0">
-        <a href={siteConfig.hero.cta.primary.href} class="bg-brand-mint border-2 border-brand-charcoal rounded-lg px-8 py-4 font-semibold text-brand-charcoal shadow-[4px_4px_0px_0px_rgba(45,52,70,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all text-center">
+        <a href={siteConfig.hero.cta.primary.href} class="bg-brand-mint border-2 border-brand-charcoal rounded-lg px-8 py-4 font-semibold text-brand-charcoal shadow-[4px_4px_0px_0px_rgba(45,52,70,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all text-center">
           {siteConfig.hero.cta.primary.text}
         </a>
-        <a href={siteConfig.hero.cta.secondary.href} class="border-brand-charcoal text-brand-charcoal rounded-lg border-2 bg-white px-8 py-4 font-semibold shadow-[4px_4px_0px_0px_rgba(45,52,70,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all text-center">
+        <a href={siteConfig.hero.cta.secondary.href} class="border-brand-charcoal text-brand-charcoal rounded-lg border-2 bg-white px-8 py-4 font-semibold shadow-[4px_4px_0px_0px_rgba(45,52,70,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all text-center">
           {siteConfig.hero.cta.secondary.text}
         </a>
       </div>
 
-      <div class="relative w-full overflow-hidden md:overflow-visible">
+      <div class="relative w-full">
         <div 
           id="hero-stats-track"
-          class="flex overflow-x-auto snap-x snap-mandatory no-scrollbar -mx-4 px-4 pb-8
+          class="flex overflow-x-auto snap-x snap-mandatory no-scrollbar pb-8
+                 -mx-4 px-4 gap-4
                  md:grid md:grid-cols-3 md:gap-6 md:px-2 md:mx-0 md:overflow-visible"
         >
           {
             siteConfig.hero.stats.map((stat) => (
               <div 
-                class="flex-none w-[80%] mr-4 snap-center bg-brand-lavender border-2 border-brand-charcoal p-8 rounded-xl shadow-[6px_6px_0px_0px_rgba(45,52,70,1)] 
-                       md:w-auto md:mr-0 hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none active:translate-x-[3px] active:translate-y-[3px] active:shadow-none transition-all cursor-default"
+                class="flex-none w-[85%] snap-center bg-brand-lavender border-2 border-brand-charcoal p-8 rounded-xl shadow-[6px_6px_0px_0px_rgba(45,52,70,1)] 
+                       md:w-auto hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none transition-all cursor-default"
               >
                 <div class="text-brand-charcoal mb-2 text-4xl font-bold italic">
                   {stat.value}
@@ -68,12 +69,7 @@ import { siteConfig } from '../config.ts';
 <style>
   .no-scrollbar::-webkit-scrollbar { display: none; }
   .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-  
-  /* Simplified Active State */
-  .dot-active { 
-    background-color: #2d3446 !important; 
-    opacity: 1;
-  }
+  .dot-active { background-color: #2d3446 !important; }
 </style>
 
 <script>
@@ -85,7 +81,10 @@ import { siteConfig } from '../config.ts';
 
     const updateDots = () => {
       const scrollPos = track.scrollLeft;
-      const cardWidth = track.querySelector('div').offsetWidth + 16; // Width + gap
+      const firstCard = track.querySelector('div');
+      if (!firstCard) return;
+      
+      const cardWidth = firstCard.offsetWidth + 16; // width + gap
       const activeIndex = Math.round(scrollPos / cardWidth);
 
       dots.forEach((dot, i) => {
