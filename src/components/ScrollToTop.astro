@@ -1,0 +1,58 @@
+---
+import { Icon } from 'astro-icon/components';
+---
+
+<button
+  id="scrollToTop"
+  class="fixed bottom-6 right-6 z-50 translate-y-24 opacity-0 transition-all duration-700 ease-in-out bg-brand-mint border-2 border-brand-charcoal p-3 rounded-xl shadow-[4px_4px_0px_0px_rgba(45,52,70,1)] hover:-translate-y-1 hover:shadow-[2px_2px_0px_0px_rgba(45,52,70,1)] active:translate-y-0 focus:outline-none"
+  aria-label="Back to top"
+>
+  <Icon name="heroicons:chevron-up-20-solid" class="h-6 w-6 text-brand-charcoal" />
+</button>
+
+<script>
+  function initScrollToTop() {
+    const btn = document.getElementById('scrollToTop');
+    const footer = document.querySelector('footer');
+    
+    if (!btn) return;
+
+    let isFooterVisible = false;
+
+    const updateVisibility = () => {
+      // Only show if we've scrolled down 400px AND the footer isn't near
+      if (window.scrollY > 400 && !isFooterVisible) {
+        btn.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
+        btn.classList.add('translate-y-0', 'opacity-100');
+      } else {
+        btn.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
+        btn.classList.remove('translate-y-0', 'opacity-100');
+      }
+    };
+
+    // The 'rootMargin' of 200px makes the button disappear 200px BEFORE the footer hits the screen
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        isFooterVisible = entry.isIntersecting;
+        updateVisibility();
+      });
+    }, { 
+      rootMargin: '0px 0px 200px 0px', 
+      threshold: 0 
+    });
+
+    if (footer) {
+      observer.observe(footer);
+    }
+
+    window.addEventListener('scroll', updateVisibility);
+
+    btn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  // Initialise for British English standards and Astro lifecycle [cite: 2025-07-11]
+  initScrollToTop();
+  document.addEventListener('astro:after-swap', initScrollToTop);
+</script>

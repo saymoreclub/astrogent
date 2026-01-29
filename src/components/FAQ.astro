@@ -2,9 +2,11 @@
 import { siteConfig } from '../config.ts';
 import { Icon } from 'astro-icon/components';
 import { faqItems } from '../content/faq.ts'; 
+
+const iconColours = ['bg-brand-lavender', 'bg-brand-mint', 'bg-brand-coral'];
 ---
 
-<section id="faq" class="relative border-t-4 border-brand-charcoal px-4 py-24 sm:px-6 lg:px-8 bg-white overflow-hidden">
+<section id="faq" class="relative border-t-4 border-brand-charcoal px-4 py-12 sm:py-20 sm:px-6 lg:px-8 bg-white overflow-hidden">
   
   <div class="absolute inset-0 pointer-events-none opacity-[0.12]" 
        style="background-image: linear-gradient(#477eff 1px, transparent 1px); background-size: 100% 3rem;">
@@ -13,36 +15,43 @@ import { faqItems } from '../content/faq.ts';
   <div class="absolute left-8 top-0 bottom-0 w-1 border-l-2 border-red-500 opacity-20 pointer-events-none md:left-24"></div>
 
   <div class="mx-auto max-w-4xl relative z-10">
-    <div class="scroll-fade-up mb-20">
-      <h2 class="text-brand-charcoal mb-4 text-4xl font-extrabold sm:text-5xl tracking-tight uppercase italic">
-        <span class="bg-brand-mint px-4 py-1 border-4 border-brand-charcoal shadow-[8px_8px_0px_0px_rgba(45,52,70,1)]">
+    <div class="scroll-fade-up mb-6 sm:mb-8 relative z-20"> 
+      <h2 class="text-brand-charcoal text-2xl sm:text-5xl font-extrabold tracking-tight uppercase italic leading-none">
+        <span class="bg-brand-mint px-3 py-1.5 sm:px-5 sm:py-2.5 border-[3px] sm:border-4 border-brand-charcoal shadow-[4px_4px_0px_0px_rgba(45,52,70,1)] sm:shadow-[6px_6px_0px_0px_rgba(45,52,70,1)] -rotate-1 inline-block whitespace-nowrap">
           {siteConfig.faq.title}
         </span>
       </h2>
-      <p class="text-brand-charcoal/70 text-xl font-black uppercase tracking-tight mt-10">
+
+      <p class="text-brand-charcoal text-sm sm:text-lg font-black uppercase tracking-tight mt-4 opacity-80">
         {siteConfig.faq.subtitle}
       </p>
     </div>
 
-    <div class="space-y-4">
+    <div class="space-y-2 sm:space-y-3 relative z-10">
       {
-        faqItems.map((item) => (
-          <div class="group relative">
-            <details class="faq-details cursor-pointer">
-              <summary class="flex items-center justify-between list-none py-6 border-b-2 border-brand-charcoal/10 transition-colors hover:bg-brand-lavender/10">
-                <span class="text-xl font-black uppercase italic tracking-tight text-brand-charcoal pr-8 group-hover:pl-2 transition-all">
-                  {item.question}
-                </span>
-                <div class="bg-white border-2 border-brand-charcoal p-1 rounded shadow-[4px_4px_0px_0px_rgba(45,52,70,1)] group-open:bg-brand-lavender group-open:rotate-45 transition-all">
-                  <Icon name="heroicons:plus" class="h-6 w-6 text-brand-charcoal" />
-                </div>
-              </summary>
-              <div class="py-8 px-6 bg-slate-50 border-x-4 border-brand-charcoal my-2 shadow-[6px_6px_0px_0px_rgba(45,52,70,1)]">
-                <p class="text-brand-charcoal font-bold leading-relaxed italic text-lg whitespace-pre-line">
+        faqItems.map((item, index) => (
+          <div class={`faq-item group border-2 border-brand-charcoal bg-white rounded-xl sm:rounded-2xl shadow-[3px_3px_0px_0px_rgba(45,52,70,0.6)] transition-all duration-200 ${index === 0 ? 'is-open' : ''}`}>
+            <button 
+              type="button"
+              class="faq-trigger w-full flex items-center justify-between py-3 px-4 sm:py-4 sm:px-6 text-left cursor-pointer transition-colors hover:bg-slate-50 rounded-xl sm:rounded-2xl"
+              aria-expanded={index === 0 ? "true" : "false"}
+            >
+              <span class="text-xs sm:text-base font-black uppercase italic tracking-tight text-brand-charcoal pr-4">
+                {item.question}
+              </span>
+              <div class={`faq-icon ${iconColours[index % iconColours.length]} border-2 border-brand-charcoal p-1 rounded-lg shadow-[2px_2px_0px_0px_rgba(45,52,70,1)] transition-all shrink-0 pointer-events-none`}>
+                <Icon name="heroicons:plus" class="h-3.5 w-3.5 sm:h-4 sm:w-4 text-brand-charcoal transition-transform duration-300" />
+              </div>
+            </button>
+            
+            <div class="faq-content overflow-hidden transition-all duration-300 ease-in-out max-h-0 opacity-0">
+              <div class="px-4 pb-4 sm:px-6 sm:pb-6">
+                <div class="h-px w-full bg-brand-charcoal/10 mb-3 sm:mb-4"></div>
+                <p class="text-brand-charcoal font-bold leading-relaxed italic text-xs sm:text-base whitespace-pre-line">
                   {item.answer}
                 </p>
               </div>
-            </details>
+            </div>
           </div>
         ))
       }
@@ -50,24 +59,49 @@ import { faqItems } from '../content/faq.ts';
   </div>
 </section>
 
-<script>
-  // This handles the "Close others when one opens" logic
-  const details = document.querySelectorAll(".faq-details");
+<style>
+  .faq-item.is-open .faq-content {
+    max-height: 500px; /* Increased slightly to ensure no text clipping */
+    opacity: 1;
+    margin-top: -4px;
+  }
 
-  details.forEach((targetDetail) => {
-    targetDetail.addEventListener("click", () => {
-      // Close all details that aren't the one we just clicked
-      details.forEach((detail) => {
-        if (detail !== targetDetail) {
-          detail.removeAttribute("open");
+  .faq-item.is-open .faq-icon {
+    transform: rotate(45deg) translate(1px, 1px);
+    box-shadow: none;
+  }
+
+  .faq-item.is-open {
+    background-color: #fafafa;
+    z-index: 5;
+  }
+</style>
+
+<script>
+  function initFAQ() {
+    const items = document.querySelectorAll('.faq-item');
+
+    items.forEach((item) => {
+      const trigger = item.querySelector('.faq-trigger');
+      
+      trigger?.addEventListener('click', () => {
+        const isOpen = item.classList.contains('is-open');
+
+        // Close all boxes
+        items.forEach((i) => {
+          i.classList.remove('is-open');
+          i.querySelector('.faq-trigger')?.setAttribute('aria-expanded', 'false');
+        });
+
+        // Toggle logic: If it wasn't open before the click, open it now
+        if (!isOpen) {
+          item.classList.add('is-open');
+          trigger.setAttribute('aria-expanded', 'true');
         }
       });
     });
-  });
-</script>
-
-<style>
-  details > summary::-webkit-details-marker {
-    display: none;
   }
-</style>
+
+  document.addEventListener('DOMContentLoaded', initFAQ);
+  document.addEventListener('astro:after-swap', initFAQ);
+</script>

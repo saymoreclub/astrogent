@@ -3,59 +3,66 @@ import { siteConfig } from '../config.ts';
 import { Icon } from 'astro-icon/components';
 ---
 
-<footer class="relative bg-white/90 backdrop-blur-md border-t-4 border-brand-charcoal px-4 pt-12 pb-0 text-brand-charcoal sm:px-6 lg:px-8">
+<footer id="main-footer" class="teachwell-footer relative bg-brand-charcoal border-t-8 border-brand-charcoal px-4 pt-16 pb-8 text-white sm:px-6 lg:px-8 z-[100]">
   
-  <div class="absolute inset-0 opacity-[0.03] mix-blend-multiply pointer-events-none" style="background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');"></div>
+  <div class="absolute inset-0 bg-brand-charcoal z-0"></div>
 
-  <div class="mx-auto max-w-5xl relative z-10">
-    <div class="grid grid-cols-1 gap-8 md:grid-cols-12 items-start">
+  <div class="mx-auto max-w-6xl relative z-10">
+    <div class="grid grid-cols-1 gap-12 md:grid-cols-12 items-start">
       
-      <div class="md:col-span-6">
-        <img 
-          src="/logo.svg" 
-          alt={siteConfig.site.name} 
-          class="h-10 w-auto mb-4" 
-        />
-        <p class="text-sm font-semibold uppercase tracking-widest leading-snug opacity-80 max-w-[260px]">
-          Bespoke learning platforms for independent tutors.
+      <div class="md:col-span-5 lg:col-span-6">
+        <div class="inline-block bg-white px-4 py-3 border-4 border-brand-mint shadow-[6px_6px_0px_0px_rgba(71,126,255,1)] -rotate-1 mb-6">
+           <img 
+             src="/logo.svg" 
+             alt="Teachwell Logo" 
+             class="h-8 w-auto"
+           />
+        </div>
+        <p class="text-md font-bold uppercase tracking-tight leading-snug text-white/90 max-w-[320px]">
+          Bespoke learning platforms built to help independent tutors organise and scale their business.
         </p>
       </div>
 
-      <div class="md:col-span-6">
-        <div class="grid grid-cols-3 gap-2"> {
+      <div class="md:col-span-7 lg:col-span-6">
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-8">
+          {
             siteConfig.footer.columns.map((column) => (
               <div>
-                <h4 class="mb-3 text-[10px] font-black uppercase tracking-widest opacity-40">
+                <h4 class="mb-4 text-[11px] font-black uppercase tracking-[0.2em] text-brand-mint">
                   {column.title}
                 </h4>
-                <ul class="space-y-1">
-                  {column.links.map((link) => (
-                    <li>
-                      <a 
-                        href={link.href} 
-                        class="text-[13px] font-semibold uppercase tracking-tight hover:text-brand-mint transition-colors"
-                      >
-                        {link.name}
-                      </a>
-                    </li>
-                  ))}
+                <ul class="space-y-3">
+                  {column.links.map((link) => {
+                    // Logic to ensure links go back to homepage if they are anchors
+                    const href = link.href.startsWith('#') ? `/${link.href}` : link.href;
+                    return (
+                      <li>
+                        <a 
+                          href={href} 
+                          class="text-sm font-bold uppercase tracking-tight text-white/70 hover:text-white hover:pl-1 transition-all inline-block"
+                        >
+                          {link.name}
+                        </a>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             ))
           }
 
           <div>
-            <h4 class="mb-3 text-[10px] font-black uppercase tracking-widest opacity-40">
+            <h4 class="mb-4 text-[11px] font-black uppercase tracking-[0.2em] text-brand-mint">
               Legal
             </h4>
-            <ul class="space-y-1">
+            <ul class="space-y-3">
               <li>
-                <a href="/privacy" class="text-[13px] font-semibold uppercase tracking-tight hover:text-brand-mint transition-colors">
+                <a href="/privacy" class="text-sm font-bold uppercase tracking-tight text-white/70 hover:text-white hover:pl-1 transition-all inline-block">
                   Privacy
                 </a>
               </li>
               <li>
-                <a href="/terms" class="text-[13px] font-semibold uppercase tracking-tight hover:text-brand-mint transition-colors">
+                <a href="/terms" class="text-sm font-bold uppercase tracking-tight text-white/70 hover:text-white hover:pl-1 transition-all inline-block">
                   Terms
                 </a>
               </li>
@@ -65,31 +72,40 @@ import { Icon } from 'astro-icon/components';
       </div>
     </div>
 
-    <div class="mt-10 py-6 border-t border-brand-charcoal/10 flex flex-col md:flex-row items-center justify-between gap-4">
-      <div class="flex flex-wrap items-center justify-center md:justify-start gap-x-3">
-        <p class="text-[10px] font-bold uppercase tracking-widest opacity-40">
-          &copy; {siteConfig.footer.copyright}
+    <div class="mt-20 pt-8 border-t-2 border-white/10 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex flex-col md:flex-row items-center gap-4 text-center md:text-left">
+        <p class="text-[10px] font-black uppercase tracking-widest text-brand-mint">
+          © Teachwell.io 2026. All rights reserved.
         </p>
-        <span class="text-brand-charcoal/10">•</span>
-        <a 
-          href="https://jonesgroup.tech" 
-          target="_blank" 
-          class="text-[10px] font-black uppercase tracking-widest hover:text-brand-mint transition-colors"
-        >
-          Part of Jones Group
-        </a>
+        <div class="hidden md:block h-1 w-1 rounded-full bg-white/20"></div>
+        <div class="flex items-center">
+          <a 
+            href="https://jonesgroup.tech" 
+            target="_blank" 
+            class="transition-opacity hover:opacity-80"
+          >
+            <img 
+              src="https://www.jonesgroup.tech/assets/logodarkmode.svg" 
+              alt="Jones Group" 
+              class="h-5 w-auto"
+            />
+          </a>
+        </div>
       </div>
 
-      <div class="flex space-x-5">
-        <a href="#" class="text-brand-charcoal/40 hover:text-brand-charcoal transition-colors">
-          <Icon name="simple-icons:instagram" class="h-5 w-5" />
-        </a>
-        <a href="#" class="text-brand-charcoal/40 hover:text-brand-charcoal transition-colors">
-          <Icon name="simple-icons:facebook" class="h-5 w-5" />
-        </a>
-        <a href="#" class="text-brand-charcoal/40 hover:text-brand-charcoal transition-colors">
-          <Icon name="simple-icons:linkedin" class="h-5 w-5" />
-        </a>
+      <div class="flex gap-4">
+        {[
+          { icon: 'simple-icons:instagram', href: '#' },
+          { icon: 'simple-icons:facebook', href: '#' },
+          { icon: 'simple-icons:linkedin', href: '#' }
+        ].map((social) => (
+          <a 
+            href={social.href} 
+            class="bg-white/5 border-2 border-white/10 p-2 rounded-xl hover:bg-brand-mint hover:border-brand-charcoal hover:text-brand-charcoal transition-all hover:-translate-y-1 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)] text-white"
+          >
+            <Icon name={social.icon} class="h-5 w-5" />
+          </a>
+        ))}
       </div>
     </div>
   </div>

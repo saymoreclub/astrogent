@@ -3,140 +3,122 @@ import { siteConfig } from '../config.ts';
 import { Icon } from 'astro-icon/components';
 ---
 
-<section id="contact" class="relative border-t-4 border-brand-charcoal px-4 py-24 sm:px-6 lg:px-8 bg-brand-lavender overflow-hidden">
+<section id="contact" class="relative border-t-4 border-brand-charcoal px-4 pt-16 pb-24 sm:px-6 lg:px-8 bg-brand-lavender overflow-hidden">
   
-  <div class="absolute top-12 left-12 h-24 w-24 border-t-8 border-l-8 border-brand-charcoal pointer-events-none opacity-20"></div>
-  <div class="absolute bottom-12 right-12 h-24 w-24 border-b-8 border-r-8 border-brand-charcoal pointer-events-none opacity-20"></div>
+  <div class="absolute top-8 left-8 h-16 w-16 border-t-4 border-l-4 border-brand-charcoal pointer-events-none opacity-10 hidden sm:block"></div>
+  <div class="absolute bottom-8 right-8 h-16 w-16 border-b-4 border-r-4 border-brand-charcoal pointer-events-none opacity-10 hidden sm:block"></div>
 
   <div class="mx-auto max-w-7xl relative z-10">
-    <div class="grid grid-cols-1 items-start gap-16 lg:grid-cols-2">
+    <div class="grid grid-cols-1 items-start gap-12 lg:grid-cols-2 lg:gap-16">
       
       <div class="scroll-fade-left">
         <h2 class="text-brand-charcoal mb-8 text-4xl font-extrabold sm:text-6xl tracking-tight uppercase italic">
-          <span class="bg-white px-4 py-1 border-4 border-brand-charcoal shadow-[8px_8px_0px_0px_rgba(45,52,70,1)] -rotate-1 inline-block">
+          <span class="bg-white px-4 py-2 border-4 border-brand-charcoal shadow-[6px_6px_0px_0px_rgba(45,52,70,1)] -rotate-1 inline-block">
             {siteConfig.contact.title}
           </span>
         </h2>
-        <p class="text-brand-charcoal mb-10 text-xl font-bold leading-relaxed uppercase tracking-tight">
+        <p class="text-brand-charcoal mb-10 text-lg sm:text-xl font-black uppercase tracking-tight max-w-md">
           {siteConfig.contact.subtitle}
         </p>
 
-        <ul class="mb-12 space-y-6">
+        <ul class="mb-12 space-y-5">
           {
             siteConfig.contact.benefits.map((benefit) => (
               <li class="flex items-center group">
-                <div class="bg-brand-mint border-2 border-brand-charcoal p-1 rounded shadow-[3px_3px_0px_0px_rgba(45,52,70,1)] mr-4 group-hover:translate-x-1 group-hover:translate-y-1 group-hover:shadow-none transition-all">
-                  <Icon
-                    name="heroicons:check"
-                    class="text-brand-charcoal h-6 w-6 flex-shrink-0"
-                  />
+                <div class="bg-brand-mint border-2 border-brand-charcoal p-1 rounded-lg shadow-[3px_3px_0px_0px_rgba(45,52,70,1)] mr-4 group-hover:translate-x-0.5 group-hover:translate-y-0.5 group-hover:shadow-none transition-all">
+                  <Icon name="heroicons:check" class="text-brand-charcoal h-5 w-5 flex-shrink-0" />
                 </div>
-                <span class="text-brand-charcoal font-black uppercase italic tracking-tight text-lg">{benefit}</span>
+                <span class="text-brand-charcoal font-black uppercase italic tracking-tight text-md sm:text-lg">{benefit}</span>
               </li>
             ))
           }
         </ul>
 
-        <div class="border-t-4 border-brand-charcoal pt-10">
-          <p class="text-brand-charcoal/60 mb-4 text-xs font-black uppercase tracking-widest">
-            Or email us direct:
+        <div class="border-t-4 border-brand-charcoal pt-8">
+          <p class="text-brand-charcoal/60 mb-3 text-[10px] font-black uppercase tracking-[0.2em]">
+            Direct Support:
           </p>
-          <a
-            href={`mailto:${siteConfig.contact.email}`}
-            class="text-brand-charcoal text-2xl font-black italic underline decoration-brand-mint decoration-4 underline-offset-4 hover:text-brand-charcoal/80 transition-colors"
-          >
+          <a href={`mailto:${siteConfig.contact.email}`} class="text-brand-charcoal text-xl sm:text-2xl font-black italic underline decoration-brand-mint decoration-4 underline-offset-4 hover:text-brand-charcoal/80 transition-colors break-all">
             {siteConfig.contact.email}
           </a>
         </div>
       </div>
 
-      <div class="scroll-fade-right border-4 border-brand-charcoal rounded-2xl bg-white p-10 shadow-[12px_12px_0px_0px_rgba(45,52,70,1)]">
-        <form id="contactForm" class="space-y-8">
-          <div class="relative">
-            <label for="name" class="text-brand-charcoal mb-2 block text-xs font-black uppercase tracking-widest italic">
-              {siteConfig.contact.form.fields.name.label}
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              required={siteConfig.contact.form.fields.name.required}
-              class="w-full border-4 border-brand-charcoal rounded-xl px-4 py-4 font-bold placeholder:text-brand-charcoal/30 focus:outline-none focus:bg-brand-mint/10 transition-colors"
-              placeholder={siteConfig.contact.form.fields.name.placeholder}
-            />
-          </div>
-
-          <div class="relative">
-            <label for="email" class="text-brand-charcoal mb-2 block text-xs font-black uppercase tracking-widest italic">
-              {siteConfig.contact.form.fields.email.label}
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              required={siteConfig.contact.form.fields.email.required}
-              class="w-full border-4 border-brand-charcoal rounded-xl px-4 py-4 font-bold placeholder:text-brand-charcoal/30 focus:outline-none focus:bg-brand-mint/10 transition-colors"
-              placeholder={siteConfig.contact.form.fields.email.placeholder}
-            />
-          </div>
-
-          <div class="relative">
-            <label for="company" class="text-brand-charcoal mb-2 block text-xs font-black uppercase tracking-widest italic">
-              {siteConfig.contact.form.fields.company.label}
-            </label>
-            <input
-              type="text"
-              id="company"
-              name="company"
-              class="w-full border-4 border-brand-charcoal rounded-xl px-4 py-4 font-bold placeholder:text-brand-charcoal/30 focus:outline-none focus:bg-brand-mint/10 transition-colors"
-              placeholder={siteConfig.contact.form.fields.company.placeholder}
-            />
-          </div>
-
-          <div class="relative">
-            <label for="message" class="text-brand-charcoal mb-2 block text-xs font-black uppercase tracking-widest italic">
-              {siteConfig.contact.form.fields.message.label}
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              rows="4"
-              class="w-full border-4 border-brand-charcoal rounded-xl px-4 py-4 font-bold placeholder:text-brand-charcoal/30 focus:outline-none focus:bg-brand-mint/10 transition-colors resize-none"
-              placeholder={siteConfig.contact.form.fields.message.placeholder}
-            ></textarea>
-          </div>
-
-          <button
-            type="submit"
-            class="group relative w-full"
-          >
-            <div class="absolute inset-0 bg-brand-charcoal rounded-xl translate-x-2 translate-y-2"></div>
-            <div class="relative bg-brand-mint border-4 border-brand-charcoal rounded-xl px-6 py-5 font-black uppercase italic tracking-tight text-xl group-hover:translate-x-1 group-hover:translate-y-1 transition-transform">
-              {siteConfig.contact.form.cta}
+      <div class="relative min-h-[500px]">
+        <div id="formContainer" class="border-4 border-brand-charcoal rounded-3xl bg-white p-6 sm:p-10 shadow-[8px_8px_0px_0px_rgba(45,52,70,1)] md:rotate-1 transition-all duration-500 opacity-100 scale-100">
+          <form id="contactForm" class="space-y-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div class="relative">
+                <label for="name" class="text-brand-charcoal mb-2 block text-[10px] font-black uppercase tracking-widest italic">{siteConfig.contact.form.fields.name.label}</label>
+                <input type="text" id="name" name="name" required class="w-full border-2 border-brand-charcoal rounded-xl px-4 py-3 font-bold placeholder:text-brand-charcoal/30 focus:outline-none focus:ring-2 focus:ring-brand-mint/50 transition-all" placeholder={siteConfig.contact.form.fields.name.placeholder} />
+              </div>
+              <div class="relative">
+                <label for="email" class="text-brand-charcoal mb-2 block text-[10px] font-black uppercase tracking-widest italic">{siteConfig.contact.form.fields.email.label}</label>
+                <input type="email" id="email" name="email" required class="w-full border-2 border-brand-charcoal rounded-xl px-4 py-3 font-bold placeholder:text-brand-charcoal/30 focus:outline-none focus:ring-2 focus:ring-brand-mint/50 transition-all" placeholder={siteConfig.contact.form.fields.email.placeholder} />
+              </div>
             </div>
-          </button>
 
-          <p class="text-brand-charcoal/50 text-center text-[10px] font-bold uppercase tracking-widest leading-relaxed">
-            By clicking request, you agree to our 
-            <a href="#" class="underline hover:text-brand-charcoal">Terms</a> and 
-            <a href="#" class="underline hover:text-brand-charcoal">Privacy</a>.
-          </p>
-        </form>
+            <div class="relative">
+              <label for="company" class="text-brand-charcoal mb-2 block text-[10px] font-black uppercase tracking-widest italic">{siteConfig.contact.form.fields.company.label}</label>
+              <input type="text" id="company" name="company" class="w-full border-2 border-brand-charcoal rounded-xl px-4 py-3 font-bold placeholder:text-brand-charcoal/30 focus:outline-none focus:ring-2 focus:ring-brand-mint/50 transition-all" placeholder={siteConfig.contact.form.fields.company.placeholder} />
+            </div>
+
+            <div class="relative">
+              <label for="message" class="text-brand-charcoal mb-2 block text-[10px] font-black uppercase tracking-widest italic">{siteConfig.contact.form.fields.message.label}</label>
+              <textarea id="message" name="message" rows="3" class="w-full border-2 border-brand-charcoal rounded-xl px-4 py-3 font-bold placeholder:text-brand-charcoal/30 focus:outline-none focus:ring-2 focus:ring-brand-mint/50 transition-all resize-none" placeholder={siteConfig.contact.form.fields.message.placeholder}></textarea>
+            </div>
+
+            <button type="submit" class="group relative w-full pt-2">
+              <div class="absolute inset-0 bg-brand-charcoal rounded-2xl translate-x-1.5 translate-y-1.5"></div>
+              <div class="relative bg-brand-mint border-2 border-brand-charcoal rounded-2xl px-6 py-4 font-black uppercase italic tracking-tight text-lg group-hover:translate-x-0.5 group-hover:translate-y-0.5 transition-all">
+                {siteConfig.contact.form.cta}
+              </div>
+            </button>
+          </form>
+        </div>
+
+        <div id="successMessage" class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-0 scale-95 transition-all duration-500">
+          <div class="border-4 border-brand-charcoal rounded-3xl bg-brand-mint p-10 shadow-[8px_8px_0px_0px_rgba(45,52,70,1)] text-center -rotate-1">
+            <div class="bg-white border-4 border-brand-charcoal rounded-full p-3 w-16 h-16 mx-auto mb-6 flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(45,52,70,1)]">
+              <Icon name="heroicons:check-badge" class="h-10 w-10 text-brand-charcoal" />
+            </div>
+            <h3 class="text-2xl font-black uppercase italic tracking-tight text-brand-charcoal mb-2">Request Received!</h3>
+            <p class="text-brand-charcoal font-bold uppercase text-sm tracking-tight">We'll be in touch shortly to get you started.</p>
+            <button id="resetForm" class="mt-8 text-xs font-black uppercase underline tracking-widest hover:text-white transition-colors cursor-pointer pointer-events-auto">Send another message</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
+  function initContact() {
     const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
+    const formContainer = document.getElementById('formContainer');
+    const successMessage = document.getElementById('successMessage');
+    const resetBtn = document.getElementById('resetForm');
+
+    if (contactForm && formContainer && successMessage) {
       contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        // Here you would typically handle the form submission
-        alert('Request received. We will be in touch shortly.');
-        (contactForm as HTMLFormElement).reset();
+        
+        // Visual Transition
+        formContainer.classList.add('opacity-0', 'scale-95', 'pointer-events-none');
+        
+        setTimeout(() => {
+          formContainer.classList.add('hidden');
+          successMessage.classList.remove('opacity-0', 'scale-95', 'pointer-events-none');
+          successMessage.classList.add('opacity-100', 'scale-100', 'pointer-events-auto');
+        }, 500);
       });
     }
-  });
+
+    resetBtn?.addEventListener('click', () => {
+      location.reload(); // Simplest way to reset the view state
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initContact);
+  document.addEventListener('astro:after-swap', initContact);
 </script>

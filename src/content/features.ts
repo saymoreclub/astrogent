@@ -1,12 +1,12 @@
 export const featuresContent = [
   {
     title: 'Instant Launch',
-    description: 'Stop waiting weeks for a developer. We get your professional course platform live and ready to accept students in under 24 hours.',
+    description: 'Stop waiting weeks for a developer. We get your professional Teachwell platform live and ready to accept students in under 24 hours.',
     icon: 'lightning',
   },
   {
     title: 'Keep Every Penny',
-    description: 'We charge zero commission on your sales. Unlike other platforms, your hard-earned revenue goes directly to your bank account.',
+    description: 'Teachwell charges zero commission on your sales. Unlike other platforms, your hard-earned revenue goes directly to your bank account.',
     icon: 'zap',
   },
   {
@@ -16,7 +16,7 @@ export const featuresContent = [
   },
   {
     title: 'Secure Hosting',
-    description: 'Enjoy peace of mind with fully managed technical hosting and security. We handle the updates while you handle the students.',
+    description: 'Enjoy peace of mind with fully managed technical hosting and security. We handle the updates while you focus on the students.',
     icon: 'shield',
   },
   {

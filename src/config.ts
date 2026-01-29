@@ -3,15 +3,15 @@ export const siteConfig = {
   // SITE METADATA & SEO
   // ============================================
   site: {
-    name: 'Lernit',
-    title: 'Lernit | Sell Courses on Your Own Platform',
+    name: 'Teachwell',
+    title: 'Teachwell | Sell Courses on Your Own Platform',
     description: 'Professional learning platforms for independent tutors. One fixed monthly fee, zero commission.',
     keywords: 'sell courses, tutor platform, custom LMS, student portal, independent teacher website',
-    email: 'hello@lernit.io',
-    ogTitle: 'Lernit | Sell Courses on Your Own Platform',
+    email: 'hello@teachwell.io',
+    ogTitle: 'Teachwell | Sell Courses on Your Own Platform',
     ogDescription: 'Professional learning platforms for tutors. Keep 100% of your revenue.',
     twitterCard: 'summary_large_image',
-    twitterTitle: 'Lernit',
+    twitterTitle: 'Teachwell',
     twitterDescription: 'Custom learning platforms for independent educators.',
   },
 
@@ -122,7 +122,7 @@ export const siteConfig = {
     plans: [
       {
         name: 'Starter',
-        price: '£29',
+        price: '£19',
         period: '/month',
         description: 'For tutors starting out with a small, focused student group.',
         features: [
@@ -130,14 +130,14 @@ export const siteConfig = {
           'Course Content Hosting',
           'Stripe & PayPal Integration',
           'Direct Email Support',
-          'Lernit Subdomain',
+          'Teachwell Subdomain',
         ],
         cta: { text: 'Start Now', href: '#contact' },
         featured: false,
       },
       {
         name: 'Professional',
-        price: '£49',
+        price: '£29',
         period: '/month',
         description: 'The standard for serious independent tutors.',
         badge: 'MOST POPULAR',
@@ -191,7 +191,7 @@ export const siteConfig = {
   contact: {
     title: 'Start Building Today',
     subtitle: 'Join the educators who own their student experience.',
-    email: 'hello@lernit.io',
+    email: 'hello@teachwell.io',
     benefits: [
       'Keep 100% of your sales',
       'Own your student data',
@@ -214,7 +214,7 @@ export const siteConfig = {
   // ============================================
   footer: {
     tagline: 'Bespoke learning platforms for independent tutors.',
-    copyright: `Lernit.io ${new Date().getFullYear()}. All rights reserved.`,
+    copyright: `Teachwell.io 2026. All rights reserved.`,
     columns: [
       {
         title: 'Platform',
@@ -227,7 +227,7 @@ export const siteConfig = {
       {
         title: 'Support',
         links: [
-          { name: 'Email Us', href: 'mailto:hello@lernit.io' },
+          { name: 'Email Us', href: 'mailto:hello@teachwell.io' },
           { name: 'FAQ', href: '#faq' },
         ],
       },

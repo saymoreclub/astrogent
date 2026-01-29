@@ -26,32 +26,95 @@ import { testimonialsContent } from '../content/testimonials';
       </p>
     </div>
 
-    <div class="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
-      {
-        testimonialsContent.map((testimonial, index) => (
-          <div
-            class={`relative p-8 border-2 border-brand-charcoal rounded-2xl shadow-[8px_8px_0px_0px_rgba(45,52,70,1)] transition-all hover:-translate-y-1 ${testimonial.color} ${index % 2 === 0 ? 'rotate-1' : '-rotate-1'}`}
-          >
-            <div class="absolute -top-4 -left-4 bg-white border-2 border-brand-charcoal p-2 rounded-lg shadow-[4px_4px_0px_0px_rgba(45,52,70,1)]">
-              <Icon name="heroicons:chat-bubble-bottom-center-text" class="h-6 w-6 text-brand-charcoal" />
-            </div>
-
-            <p class="text-brand-charcoal text-lg font-bold leading-relaxed mb-8 italic">
-              "{testimonial.content}"
-            </p>
-
-            <div class="flex items-center gap-4">
-              <div class="flex h-12 w-12 items-center justify-center rounded-full border-2 border-brand-charcoal bg-white font-black text-brand-charcoal shadow-[2px_2px_0px_0px_rgba(45,52,70,1)]">
-                {testimonial.avatar}
+    <div class="relative">
+      <div 
+        id="testimonials-track"
+        class="flex overflow-x-auto snap-x snap-mandatory no-scrollbar -mx-4 px-4 pt-4 pb-12 
+               md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-10 md:px-2 md:mx-0 md:overflow-visible"
+      >
+        {
+          testimonialsContent.map((testimonial, index) => (
+            <div
+              class={`flex-none w-[85%] mr-6 snap-center md:w-auto md:mr-0 
+              relative p-8 border-2 border-brand-charcoal rounded-2xl shadow-[8px_8px_0px_0px_rgba(45,52,70,1)] 
+              transition-all hover:-translate-y-1 ${testimonial.color} ${index % 2 === 0 ? 'rotate-1' : '-rotate-1'}`}
+            >
+              <div class="absolute -top-4 -left-4 bg-white border-2 border-brand-charcoal p-2 rounded-lg shadow-[4px_4px_0px_0px_rgba(45,52,70,1)]">
+                <Icon name="heroicons:chat-bubble-bottom-center-text" class="h-6 w-6 text-brand-charcoal" />
               </div>
-              <div>
-                <h4 class="font-black uppercase text-sm tracking-tight text-brand-charcoal">{testimonial.name}</h4>
-                <p class="text-xs font-bold text-brand-charcoal/60 uppercase">{testimonial.role}</p>
+
+              <p class="text-brand-charcoal text-lg font-bold leading-relaxed mb-8 italic">
+                "{testimonial.content}"
+              </p>
+
+              <div class="flex items-center gap-4 mt-auto">
+                <div class="flex h-12 w-12 items-center justify-center rounded-full border-2 border-brand-charcoal bg-white font-black text-brand-charcoal shadow-[2px_2px_0px_0px_rgba(45,52,70,1)]">
+                  {testimonial.avatar}
+                </div>
+                <div>
+                  <h4 class="font-black uppercase text-sm tracking-tight text-brand-charcoal">{testimonial.name}</h4>
+                  <p class="text-xs font-bold text-brand-charcoal/60 uppercase">{testimonial.role}</p>
+                </div>
               </div>
             </div>
-          </div>
-        ))
-      }
+          ))
+        }
+      </div>
+
+      <div class="flex justify-center gap-2 mt-2 md:hidden">
+        {testimonialsContent.map((_, i) => (
+          <div 
+            class="h-2 w-2 rounded-full bg-brand-charcoal/20 transition-colors duration-300" 
+            data-testimonial-dot={i}
+          ></div>
+        ))}
+      </div>
     </div>
   </div>
 </section>
+
+<style>
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  .testimonial-dot-active { background-color: #2d3446 !important; }
+</style>
+
+<script>
+  function initTestimonials() {
+    const track = document.getElementById('testimonials-track');
+    const dots = document.querySelectorAll('[data-testimonial-dot]');
+    if (!track) return;
+
+    // Start on middle card for mobile
+    if (window.innerWidth < 768) {
+      const cards = track.children;
+      const middleIndex = Math.floor(cards.length / 2);
+      const middleCard = cards[middleIndex];
+      const scrollLeft = middleCard.offsetLeft - (window.innerWidth / 2) + (middleCard.offsetWidth / 2);
+      track.scrollLeft = scrollLeft;
+    }
+
+    const updateDots = () => {
+      const scrollPos = track.scrollLeft;
+      const firstCard = track.querySelector('div');
+      if (!firstCard) return;
+      
+      const cardWidth = firstCard.offsetWidth + 24; 
+      const activeIndex = Math.round(scrollPos / cardWidth);
+
+      dots.forEach((dot, i) => {
+        if (i === activeIndex) {
+          dot.classList.add('testimonial-dot-active');
+        } else {
+          dot.classList.remove('testimonial-dot-active');
+        }
+      });
+    };
+
+    track.addEventListener('scroll', updateDots);
+    updateDots();
+  }
+
+  document.addEventListener('DOMContentLoaded', initTestimonials);
+  document.addEventListener('astro:after-swap', initTestimonials);
+</script>

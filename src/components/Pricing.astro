@@ -5,93 +5,144 @@ import { Icon } from 'astro-icon/components';
 
 <section
   id="pricing"
-  class="relative border-t-4 border-brand-charcoal px-4 py-24 sm:px-6 lg:px-8 bg-brand-lavender overflow-hidden"
+  class="relative border-t-4 border-brand-charcoal px-4 pt-12 pb-16 sm:pt-16 sm:pb-20 lg:px-8 bg-brand-lavender overflow-hidden"
 >
   <div class="absolute inset-0 opacity-[0.15] mix-blend-multiply pointer-events-none" style="background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');"></div>
   <div class="absolute inset-0 opacity-20 pointer-events-none" style="background-image: radial-gradient(circle at 2px 2px, #2d3446 1px, transparent 0); background-size: 40px 40px;"></div>
 
-  <div class="absolute top-12 left-12 h-24 w-24 border-t-8 border-l-8 border-brand-charcoal pointer-events-none"></div>
-  <div class="absolute top-12 right-12 h-24 w-24 border-t-8 border-r-8 border-brand-charcoal pointer-events-none"></div>
-  <div class="absolute bottom-12 left-12 h-24 w-24 border-b-8 border-l-8 border-brand-charcoal pointer-events-none"></div>
-  <div class="absolute bottom-12 right-12 h-24 w-24 border-b-8 border-r-8 border-brand-charcoal pointer-events-none"></div>
+  <div class="absolute top-8 left-8 h-16 w-16 border-t-4 border-l-4 border-brand-charcoal opacity-15 pointer-events-none hidden md:block"></div>
+  <div class="absolute top-8 right-8 h-16 w-16 border-t-4 border-r-4 border-brand-charcoal opacity-15 pointer-events-none hidden md:block"></div>
 
   <div class="mx-auto max-w-7xl relative z-10">
-    <div class="scroll-fade-up mx-auto mb-20 max-w-3xl text-center">
+    <div class="scroll-fade-up mx-auto mb-16 max-w-3xl text-center">
       <h2 class="text-brand-charcoal mb-6 text-4xl font-extrabold sm:text-5xl tracking-tight uppercase italic">
         <span class="relative inline-block px-4 py-2 bg-white border-4 border-brand-charcoal shadow-[8px_8px_0px_0px_rgba(45,52,70,1)] -rotate-1">
           {siteConfig.pricing.title}
         </span>
       </h2>
-      <p class="text-brand-charcoal text-xl font-black uppercase tracking-tight mt-8">
+      <p class="text-brand-charcoal text-xl font-black uppercase tracking-tight mt-12 mb-4">
         {siteConfig.pricing.subtitle}
       </p>
     </div>
 
-    <div class="mx-auto grid max-w-6xl grid-cols-1 items-center gap-6 md:grid-cols-3 md:gap-4 lg:gap-8">
-      {
-        siteConfig.pricing.plans.map((plan) => (
-          <div 
-            class={`relative flex flex-col bg-white border-4 border-brand-charcoal rounded-2xl p-8 transition-all duration-200
-            ${plan.featured 
-              ? 'z-20 md:scale-105 shadow-[12px_12px_0px_0px_rgba(45,52,70,1)] hover:shadow-[4px_4px_0px_0px_rgba(45,52,70,1)] hover:translate-x-[8px] hover:translate-y-[8px]' 
-              : 'z-10 md:scale-90 opacity-95 shadow-[8px_8px_0px_0px_rgba(45,52,70,1)] hover:shadow-[2px_2px_0px_0px_rgba(45,52,70,1)] hover:translate-x-[6px] hover:translate-y-[6px] hover:opacity-100'
-            }`}
-          >
-            {plan.featured && (
-              <div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-brand-charcoal text-white px-6 py-1.5 rounded-full text-[11px] font-black uppercase tracking-[0.2em] whitespace-nowrap z-30 shadow-[4px_4px_0px_0px_rgba(45,52,70,0.3)]">
-                {plan.badge}
-              </div>
-            )}
-
-            <div class="border-b-4 border-brand-charcoal pb-6 mb-8">
-              <h3 class="text-2xl font-black uppercase italic text-brand-charcoal tracking-tight">
-                {plan.name}
-              </h3>
-              <div class="flex items-baseline gap-1 mt-2">
-                <span class="text-4xl font-black text-brand-charcoal">
-                  {plan.price}
-                </span>
-                <span class="text-brand-charcoal/60 font-bold text-sm">
-                  {plan.period}
-                </span>
-              </div>
-            </div>
-
-            <p class="text-brand-charcoal font-bold mb-8 leading-relaxed text-sm h-12">
-              {plan.description}
-            </p>
-
-            <ul class="mb-10 space-y-4 flex-1">
-              {plan.features.map((feature) => (
-                <li class={`flex items-start gap-3 font-bold text-xs uppercase tracking-tight ${plan.featured ? 'text-brand-charcoal' : 'text-brand-charcoal/40'}`}>
-                  <div class={`border-2 border-brand-charcoal p-0.5 rounded shadow-[2px_2px_0px_0px_rgba(45,52,70,1)]
-                    ${plan.featured 
-                      ? 'bg-brand-mint' 
-                      : 'bg-slate-100 border-slate-300 shadow-[2px_2px_0px_0px_rgba(200,200,200,1)]'
-                    }`}
-                  >
-                    <Icon
-                      name="heroicons:check"
-                      class={`h-3 w-3 ${plan.featured ? 'text-brand-charcoal' : 'text-slate-300'}`}
-                    />
-                  </div>
-                  <span>{feature}</span>
-                </li>
-              ))}
-            </ul>
-
-            <a
-              href="#contact"
-              class={`block w-full py-4 rounded-xl border-4 border-brand-charcoal text-center font-black uppercase italic tracking-tight shadow-[6px_6px_0px_0px_rgba(45,52,70,1)] hover:shadow-none hover:translate-x-[6px] hover:translate-y-[6px] transition-all 
+    <div class="relative">
+      <div 
+        id="pricing-track"
+        class="flex overflow-x-auto snap-x snap-mandatory no-scrollbar -mx-4 px-4 pt-10 pb-8
+               md:grid md:grid-cols-3 md:items-center md:gap-4 lg:gap-8 md:px-0 md:mx-0 md:overflow-visible"
+      >
+        {
+          siteConfig.pricing.plans.map((plan) => (
+            <div 
+              class={`flex-none w-[85%] mr-6 snap-center md:w-auto md:mr-0 
+              relative flex flex-col bg-white border-4 border-brand-charcoal rounded-2xl p-8 transition-all duration-200
               ${plan.featured 
-                ? 'bg-brand-mint' 
-                : 'bg-white text-brand-charcoal/70'}`}
+                ? 'z-20 scale-100 md:scale-105 shadow-[12px_12px_0px_0px_rgba(45,52,70,1)]' 
+                : 'z-10 scale-90 opacity-95 shadow-[8px_8px_0px_0px_rgba(45,52,70,1)]'
+              }`}
             >
-              {plan.cta.text}
-            </a>
-          </div>
-        ))
-      }
+              {plan.featured && (
+                <div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-brand-charcoal text-white px-6 py-1.5 rounded-full text-[11px] font-black uppercase tracking-[0.2em] whitespace-nowrap z-30 shadow-[4px_4px_0px_0px_rgba(45,52,70,0.3)]">
+                  {plan.badge}
+                </div>
+              )}
+
+              <div class="border-b-4 border-brand-charcoal pb-6 mb-8">
+                <h3 class="text-2xl font-black uppercase italic text-brand-charcoal tracking-tight">
+                  {plan.name}
+                </h3>
+                <div class="flex items-baseline gap-1 mt-2">
+                  <span class="text-4xl font-black text-brand-charcoal">
+                    {plan.price}
+                  </span>
+                  <span class="text-brand-charcoal/60 font-bold text-sm">
+                    {plan.period}
+                  </span>
+                </div>
+              </div>
+
+              <p class="text-brand-charcoal font-bold mb-8 leading-relaxed text-sm h-12">
+                {plan.description}
+              </p>
+
+              <ul class="mb-10 space-y-4 flex-1">
+                {plan.features.map((feature) => (
+                  <li class={`flex items-start gap-3 font-bold text-xs uppercase tracking-tight ${plan.featured ? 'text-brand-charcoal' : 'text-brand-charcoal/40'}`}>
+                    <div class={`border-2 border-brand-charcoal p-0.5 rounded shadow-[2px_2px_0px_0px_rgba(45,52,70,1)]
+                      ${plan.featured ? 'bg-brand-mint' : 'bg-slate-100 border-slate-300 shadow-[2px_2px_0px_0px_rgba(200,200,200,1)]'}`}
+                    >
+                      <Icon name="heroicons:check" class={`h-3 w-3 ${plan.featured ? 'text-brand-charcoal' : 'text-slate-300'}`} />
+                    </div>
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <a
+                href="#contact"
+                class={`block w-full py-4 rounded-xl border-4 border-brand-charcoal text-center font-black uppercase italic tracking-tight shadow-[6px_6px_0px_0px_rgba(45,52,70,1)] active:shadow-none active:translate-x-[4px] active:translate-y-[4px] transition-all 
+                ${plan.featured ? 'bg-brand-mint' : 'bg-white text-brand-charcoal/70'}`}
+              >
+                {plan.cta.text}
+              </a>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="flex justify-center gap-2 mt-2 md:hidden">
+        {siteConfig.pricing.plans.map((_, i) => (
+          <div class="h-2 w-2 rounded-full bg-brand-charcoal/20 transition-colors duration-300" data-pricing-dot={i}></div>
+        ))}
+      </div>
     </div>
   </div>
 </section>
+
+<style>
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  .pricing-dot-active { background-color: #2d3446 !important; }
+</style>
+
+<script>
+  function initPricing() {
+    const track = document.getElementById('pricing-track');
+    const dots = document.querySelectorAll('[data-pricing-dot]');
+    if (!track) return;
+
+    // Center Professional plan on load for mobile
+    if (window.innerWidth < 768) {
+      const cards = track.children;
+      // Index 1 is the middle card (Professional)
+      const featuredCard = cards[1] as HTMLElement;
+      if (featuredCard) {
+        const scrollLeft = featuredCard.offsetLeft - (window.innerWidth / 2) + (featuredCard.offsetWidth / 2);
+        track.scrollLeft = scrollLeft;
+      }
+    }
+
+    const updateDots = () => {
+      const scrollPos = track.scrollLeft;
+      const firstCard = track.querySelector('div');
+      if (!firstCard) return;
+      
+      const cardWidth = firstCard.offsetWidth + 24; 
+      const activeIndex = Math.round(scrollPos / cardWidth);
+
+      dots.forEach((dot, i) => {
+        if (i === activeIndex) {
+          dot.classList.add('pricing-dot-active');
+        } else {
+          dot.classList.remove('pricing-dot-active');
+        }
+      });
+    };
+
+    track.addEventListener('scroll', updateDots);
+    updateDots();
+  }
+
+  document.addEventListener('DOMContentLoaded', initPricing);
+  document.addEventListener('astro:after-swap', initPricing);
+</script>
